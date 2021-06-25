@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/group_searches.min.css">
+</head>
+<body>
+<div class="basic_search">
+    <div class="search_result">
+        <h2>Количество студентов, найденных по запросу "{{ search }}": {{ result_name.count }}</h2>
+    </div>
+    <div class="for_icon">
+            <a href="{{ url_for('dir_groups') }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+    <div class="list_of_students" id="list_of_xojakent_students">
+             {% for group in result_name.data %}
+                <a href="{{ url_for('inside_of_group',id=group.id) }}">
+                    <div class="student_card {% if group.teacher_1 == 0 %} not_teacher {% endif %}">
+                        <p>{{ group.name }}</p>
+                        <p>{{ group.cost }} sum</p>
+                        <p>{{ group.type_of_course }}</p>
+                        <p>{{ group.subject }}</p>
+                        <p>{% if group.teacher_1 != 0 %}{{ group.teacher_name.lower() }}/{{ group.teacher_surname.lower() }}{% endif %}</p>
+                    </div>
+                </a>
+            {% endfor %}
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gennis Campus</title>
+    <link rel="stylesheet" href="/static/css/new/teacher_inside_group.min.css">
+</head>
+<body>
+<div class="basic_inside">
+    <div class="for_icon">
+        <a href="{{ url_for('my_group1') }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+    <div class="teacher_button">
+        <button class="give_score"><a href="{{ url_for('give_score',group_id=group.id) }}"> Дать оценку</a></button>
+        <button class="see_attendance"><a href="{{ url_for('see_att',id=group.id) }}"> Посмотреть посещаемость</a></button>
+    </div>
+     {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="for_flash">
+                            <h1>{{ message }} !</h1>
+                            <button class="close_flash">&cross;</button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    <div class="table">
+        <table>
+            <caption>Имя: {{ group.name }}</caption>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Пользователь</th>
+                <th>Возраст</th>
+                <th>Номер телефона</th>
+                <th>Родительский телефон</th>
+                <th>Баланс</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.surname }}</td>
+                <td>{{ student.username }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.phone }}</td>
+                <td>{{ student.parent_phone }}</td>
+                <td>{{ student.money }} sum</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<script src="/static/js/new/flash.js"></script>
+</body>
+</html>

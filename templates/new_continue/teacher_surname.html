@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/teacher_search.min.css">
+</head>
+<body>
+<div class="basic_search">
+    <div class="search_result">
+        <h2>Количество студентов, найденных по запросу "{{ search }}": {{ result_surname.count }}</h2>
+    </div>
+    <div class="for_icon">
+        <a href="{{ url_for('teacher') }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+    <div class="list_of_students" id="list_of_xojakent_students">
+             {% for teacher in result_surname.data %}
+{#                <a href="{{ url_for('inside_of_group',id=group.id) }}">#}
+                   <div class="student_card">
+                    {% if teacher.photo %}
+                        <img src="{{ teacher.photo }}" alt="">
+                    {% else %}
+                        <img src="/static/img/user_image.png" alt="">
+                    {% endif %}
+                     <p>{{ teacher.name.lower() }}</p>
+                    <p>{{ teacher.surname.lower() }}</p>
+                    <p>{{ teacher.username.lower() }}</p>
+                    <p>{{ teacher.phone }}</p>
+                    <p>{{ teacher.subject }}</p>
+                    <p>{{ teacher.salary }} sum</p>
+                    </div>
+{#                </a>#}
+            {% endfor %}
+    </div>
+</div>
+</body>
+</html>

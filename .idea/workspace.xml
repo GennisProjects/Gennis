@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="305473da-54d5-47b2-a513-b702a7640fcd" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Flask Main" />
+        <option value="HTML File" />
+        <option value="Sass File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1tyiqr5v7remfOZ2HChTDONGQtn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="Sass" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gennis\PycharmProjects\project_1\templates\Admin templates\xojakent" />
+      <recent name="C:\Users\Gennis\PycharmProjects\project_1\static\img\icons" />
+      <recent name="C:\Users\Gennis\PycharmProjects\project_1\static\js\Jquery" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Flask server.Flask (app.py)">
+    <configuration name="Flask (app.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
+      <option name="flaskDebug" value="true" />
+      <module name="project_1" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="project_1" type="Python.FlaskServer">
+      <module name="project_1" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flask server.Flask (app.py)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="305473da-54d5-47b2-a513-b702a7640fcd" name="Default Changelist" comment="" />
+      <created>1623747923029</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623747923029</updated>
+      <workItem from="1623747996304" duration="2045000" />
+      <workItem from="1623750889481" duration="3303000" />
+      <workItem from="1623754561738" duration="12581000" />
+      <workItem from="1623842756791" duration="205000" />
+      <workItem from="1623918969945" duration="8002000" />
+      <workItem from="1623927842283" duration="8823000" />
+      <workItem from="1623994655445" duration="1803000" />
+      <workItem from="1624021673118" duration="517000" />
+      <workItem from="1624088362146" duration="16704000" />
+      <workItem from="1624180595071" duration="206000" />
+      <workItem from="1624207122775" duration="1779000" />
+      <workItem from="1624252012385" duration="6924000" />
+      <workItem from="1624267005138" duration="137000" />
+      <workItem from="1624345535588" duration="2663000" />
+      <workItem from="1624357107053" duration="3315000" />
+      <workItem from="1624360714414" duration="11545000" />
+      <workItem from="1624423196768" duration="199000" />
+      <workItem from="1624538002584" duration="9876000" />
+      <workItem from="1624626252392" duration="2389000" />
+      <workItem from="1624628936023" duration="288000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="392" y="0" key="#Flask_(app.py)" timestamp="1623752044829">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="392" y="0" key="#Flask_(app.py)/0.0.1366.728@0.0.1366.728" timestamp="1623752044829" />
+    <state x="392" y="0" key="#base_route" timestamp="1623752024693">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="392" y="0" key="#base_route/0.0.1366.728@0.0.1366.728" timestamp="1623752024693" />
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623751131438">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1623751131438" />
+    <state x="352" y="50" width="662" height="678" key="EditFileWatcherDialog" timestamp="1623756587636">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="352" y="50" width="662" height="678" key="EditFileWatcherDialog/0.0.1366.728@0.0.1366.728" timestamp="1623756587636" />
+    <state x="550" y="132" key="EnvironmentVariablesDialog" timestamp="1623756374735">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="550" y="132" key="EnvironmentVariablesDialog/0.0.1366.728@0.0.1366.728" timestamp="1623756374735" />
+    <state x="463" y="137" key="FileChooserDialogImpl" timestamp="1623756369248">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="137" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1623756369248" />
+    <state width="1323" height="267" key="GridCell.Tab.0.bottom" timestamp="1624628853517">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="267" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1624628853517" />
+    <state width="1323" height="267" key="GridCell.Tab.0.center" timestamp="1624628853516">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="267" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1624628853516" />
+    <state width="1323" height="267" key="GridCell.Tab.0.left" timestamp="1624628853516">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="267" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1624628853516" />
+    <state width="1323" height="267" key="GridCell.Tab.0.right" timestamp="1624628853517">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="267" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1624628853517" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1623751259392">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1366.728@0.0.1366.728" timestamp="1623751259392" />
+    <state x="184" y="9" key="SettingsEditor" timestamp="1623756644922">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1623756644922" />
+    <state width="592" height="446" key="SwitcherDM" timestamp="1624538053418">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="592" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1624538053418" />
+    <state x="581" y="224" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1623751227566">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="581" y="224" key="com.intellij.database.actions.DdlActions$CreateObject$1/0.0.1366.728@0.0.1366.728" timestamp="1623751227566" />
+    <state x="0" y="0" width="1339" height="715" key="dock-window-1" timestamp="1624089206856">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" width="1339" height="715" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1624089206856" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/project_1_$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1624207157029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project_1_$project_1.coverage" NAME="project_1 Coverage Results" MODIFIED="1623748758805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/project_1$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1624626291346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

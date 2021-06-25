@@ -1,0 +1,634 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/for_payment.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="basic_payment">
+<div class="button_subjects">
+    {% if user.director %}
+        <button id="xojakent_payment">Ходжикент</button>
+        <button id="gazalkent_payment">Газалкент</button>
+        <button id="chirchiq_payment">Чирчик</button>
+    {% endif %}
+    </div>
+    <div class="for_select_payment">
+        <div class="xojakent_select">
+            <select name="" id="xojakent_select" {% if user.director or user.gazalkent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+                <option value="Бухгалтерский учет">Бухгалтерский учет</option>
+                <option value="Оплата студентов">Оплата студентов</option>
+                <option value="Зарплата учителей">Зарплата учителей</option>
+                <option value="Капитальные затраты">Капитальные затраты</option>
+                <option value="Накладные расходы">Накладные расходы</option>
+                <option value="Вывод">Вывод</option>
+                <option value="Студенты с долгами">Студенты с долгами</option>
+                <option value="Финансовый отчет">Финансовый отчет</option>
+            </select>
+        </div>
+        <div class="xojakent_select">
+            <select name="" id="gazalkent_select" {% if user.director or user.xojakent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+                <option value="Бухгалтерский учет">Бухгалтерский учет</option>
+                <option value="Оплата студентов">Оплата студентов</option>
+                <option value="Зарплата учителей">Зарплата учителей</option>
+                <option value="Капитальные затраты">Капитальные затраты</option>
+                <option value="Накладные расходы">Накладные расходы</option>
+                <option value="Вывод">Вывод</option>
+                <option value="Студенты с долгами">Студенты с долгами</option>
+                <option value="Финансовый отчет">Финансовый отчет</option>
+            </select>
+        </div>
+        <div class="xojakent_select">
+            <select name="" id="chirchiq_select" {% if user.director or user.xojakent_admin or user.gazalkent_admin %} style="display: none" {% endif %}>
+                <option value="Бухгалтерский учет">Бухгалтерский учет</option>
+                <option value="Оплата студентов">Оплата студентов</option>
+                <option value="Зарплата учителей">Зарплата учителей</option>
+                <option value="Капитальные затраты">Капитальные затраты</option>
+                <option value="Накладные расходы">Накладные расходы</option>
+                <option value="Вывод">Вывод</option>
+                <option value="Студенты с долгами">Студенты с долгами</option>
+                <option value="Финансовый отчет">Финансовый отчет</option>
+            </select>
+        </div>
+    </div>
+    <div class="all_info">
+        <div class="payment" id="xojakent_payment_student" {% if user.director or user.gazalkent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Дата платежа</th>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Предыдущий балланс</th>
+                        <th>Последний платеж</th>
+                        <th>Результат Баланса</th>
+                    </tr>
+                    {% for payment in xojakent_payment %}
+                    <tr>
+                         <td>{{ payment.payment_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ payment.username }}</td>
+                        <td>{{ payment.student_name }}</td>
+                        <td>{{ payment.student_surname }}</td>
+                        <td>{{ payment.debt }}</td>
+                        <td>{{ payment.payment }}</td>
+                        <td>{{ payment.result }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="xojakent_salary">
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Зарплата</th>
+                        <th>Оплата</th>
+                        <th>Остаток зарплаты</th>
+                    </tr>
+                {% for information in xojakent_salary %}
+                    <tr>
+                        <td>{{ information.payment_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ information.username }}</td>
+                        <td>{{ information.teacher_name }}</td>
+                        <td>{{ information.teacher_surname }}</td>
+                        <td>{{ information.salary }}</td>
+                        <td>{{ information.payment }}</td>
+                        <td>{{ information.result }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="capital_xojakent">
+            {% if not user.director %}
+            <form action="{{ url_for('capital') }}" method="post">
+            <div class="forms">
+                    <input type="text" required name="name_item" placeholder="Имя элемента">
+                    <input type="number" required name="number_item" placeholder="Количество предметов">
+                    <input type="number" required name="amount_item" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+            </div>
+            </form>
+            {% endif %}
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Названия</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for capital in capital_xojakent %}
+                    <tr>
+                        <td>{{ capital.bought_data.strftime('%B %d, %Y')}}</td>
+                        <td>{{ capital.item }}</td>
+                        <td>{{ capital.number_items }}</td>
+                        <td>{{ capital.amount_item }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="overhead_xojakent">
+            <form action="{{ url_for('overhead') }}" method="post">
+                <div class="forms">
+                    <input type="text"  required  name="reason" placeholder="Причина">
+                    <input type="text"  required  name="amount" placeholder="Количество">
+                    <input type="number"  required  name="sum" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+                </div>
+            </form>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Подробность</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for overhead in overhead_xojakent %}
+                    <tr>
+                        <td>{{ overhead.payed_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ overhead.reason }}</td>
+                        <td>{{ overhead.quantity }}</td>
+                        <td>{{ overhead.sum }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="withdrawal_xojakent">
+            <form action="{{ url_for('withdrawal') }}" method="post">
+                <div class="forms">
+                    <input type="text" required name="who" placeholder="Кто взял?">
+                    <input type="text" required name="why" placeholder="Почему взял?">
+                    <input type="text" required name="amount" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+                </div>
+            </form>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Кто</th>
+                        <th>Почему</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for capital in withdrawal_xojakent %}
+                    <tr>
+                        <td>{{ capital.date.strftime('%B %d, %Y') }}</td>
+                        <td>{{ capital.who }}</td>
+                        <td>{{ capital.why }}</td>
+                        <td>{{ capital.amount}}</td>
+
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="xojakent_debt">
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Телефон номер</th>
+                        <th>Баланс</th>
+                    </tr>
+                {% for debt in student_debt_xojakent %}
+                    {% if debt.money != 0 %}
+                    <tr>
+                        <td>{{ debt.username }}</td>
+                        <td>{{ debt.name }}</td>
+                        <td>{{ debt.surname }}</td>
+                        <td>{{ debt.phone }}</td>
+                        <td>{{ debt.money }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="xojakent_profit">
+            <table>
+                <tr>
+                    <th>Все студенты</th>
+                    <th>Все группы</th>
+                    <th>Оплата студентов</th>
+                    <th>Долги</th>
+                    <th>Зарплата учителя</th>
+                    <th>Все капитальные затраты</th>
+                    <th>Все накладные расходы</th>
+                    <th>Все снятие</th>
+                    <th>Вся благотворительность</th>
+                    <th>Все преимущества</th>
+                </tr>
+                <tr>
+                    <td>{{ all_st_xoj }}</td>
+                    <td>{{ all_gr_xoj }}</td>
+                    <td>{{ all_xoj_pay }}</td>
+                    <td>{{ all_debt_xoj }}</td>
+                    <td>{{ all_xoj_sal }}</td>
+                    <td>{{ all_cap_xoj }}</td>
+                    <td>{{ all_over_xoj }}</td>
+                    <td>{{ all_with_xoj }}</td>
+                    <td>{{ xoj_charity.bank_charity }}</td>
+                    <td>{{ profit_xoj }}</td>
+            </tr>
+            </table>
+        </div>
+        <div class="payment" id="gazalkent_payment_student" {% if user.director or user.xojakent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Дата платежа</th>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Предыдущий балланс</th>
+                        <th>Последний платеж</th>
+                        <th>Результат Баланса</th>
+                    </tr>
+                    {% for payment in gazalkent_payment %}
+                    <tr>
+                         <td>{{ payment.payment_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ payment.username }}</td>
+                        <td>{{ payment.student_name }}</td>
+                        <td>{{ payment.student_surname }}</td>
+                        <td>{{ payment.debt }}</td>
+                        <td>{{ payment.payment }}</td>
+                        <td>{{ payment.result }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="gazalkent_salary">
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Зарплата</th>
+                        <th>Оплата</th>
+                        <th>Остаток зарплаты</th>
+                    </tr>
+                {% for information in gazalkent_salary %}
+                    <tr>
+                        <td>{{ information.payment_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ information.username }}</td>
+                        <td>{{ information.teacher_name }}</td>
+                        <td>{{ information.teacher_surname }}</td>
+                        <td>{{ information.salary }}</td>
+                        <td>{{ information.payment }}</td>
+                        <td>{{ information.result }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="capital_gazalkent">
+            {% if not user.director %}
+            <form action="{{ url_for('capital') }}" method="post">
+            <div class="forms">
+                    <input type="text" required name="name_item" placeholder="Имя элемента">
+                    <input type="number" required name="number_item" placeholder="Количество предметов">
+                    <input type="number" required name="amount_item" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+            </div>
+            </form>
+            {% endif %}
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Названия</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for capital in capital_gazalkent %}
+                    <tr>
+                        <td>{{ capital.bought_data.strftime('%B %d, %Y')}}</td>
+                        <td>{{ capital.item }}</td>
+                        <td>{{ capital.number_items }}</td>
+                        <td>{{ capital.amount_item }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="overhead_gazalkent">
+             <form action="{{ url_for('overhead') }}" method="post">
+                <div class="forms">
+                    <input type="text"  required  name="reason" placeholder="Причина">
+                    <input type="text"  required  name="amount" placeholder="Количество">
+                    <input type="number"  required  name="sum" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+                </div>
+            </form>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Подробность</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for overhead in overhead_gazalkent %}
+                    <tr>
+                        <td>{{ overhead.payed_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ overhead.reason }}</td>
+                        <td>{{ overhead.quantity }}</td>
+                        <td>{{ overhead.sum }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="withdrawal_gazalkent">
+            <form action="{{ url_for('withdrawal') }}" method="post">
+                <div class="forms">
+                    <input type="text" required name="who" placeholder="Кто взял?">
+                    <input type="text" required name="why" placeholder="Почему взял?">
+                    <input type="text" required name="amount" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+                </div>
+            </form>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Кто</th>
+                        <th>Почему</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for capital in withdrawal_gazalkent %}
+                    <tr>
+                        <td>{{ capital.date.strftime('%B %d, %Y') }}</td>
+                        <td>{{ capital.who }}</td>
+                        <td>{{ capital.why }}</td>
+                        <td>{{ capital.amount}}</td>
+
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="gazalkent_debt">
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Телефон номер</th>
+                        <th>Баланс</th>
+                    </tr>
+                {% for debt in student_debt_gazalkent%}
+                    {% if debt.money != 0 %}
+                    <tr>
+                        <td>{{ debt.username }}</td>
+                        <td>{{ debt.name }}</td>
+                        <td>{{ debt.surname }}</td>
+                        <td>{{ debt.phone }}</td>
+                        <td>{{ debt.money }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="gazalkent_profit">
+            <table>
+                <tr>
+                    <th>Все студенты</th>
+                    <th>Все группы</th>
+                    <th>Оплата студентов</th>
+                    <th>Долги</th>
+                    <th>Зарплата учителя</th>
+                    <th>Все капитальные затраты</th>
+                    <th>Все накладные расходы</th>
+                    <th>Все снятие</th>
+                    <th>Вся благотворительность</th>
+                    <th>Все преимущества</th>
+                </tr>
+                <tr>
+                    <td>{{ all_st_gaz }}</td>
+                    <td>{{ all_gr_gaz }}</td>
+                    <td>{{ all_gaz_pay }}</td>
+                    <td>{{ all_debt_gaz }}</td>
+                    <td>{{ all_gaz_sal }}</td>
+                    <td>{{ all_cap_gaz }}</td>
+                    <td>{{ all_over_gaz }}</td>
+                    <td>{{ all_with_gaz }}</td>
+                    <td>{{ gaz_charity.bank_charity }}</td>
+                    <td>{{ profit_gaz }}</td>
+            </tr>
+            </table>
+        </div>
+        <div class="payment" id="chirchiq_payment_student" {% if user.director or user.xojakent_admin or user.gazalkent_admin %} style="display: none" {% endif %}>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Дата платежа</th>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Предыдущий балланс</th>
+                        <th>Последний платеж</th>
+                        <th>Результат Баланса</th>
+                    </tr>
+                    {% for payment in chirchiq_payment %}
+                    <tr>
+                         <td>{{ payment.payment_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ payment.username }}</td>
+                        <td>{{ payment.student_name }}</td>
+                        <td>{{ payment.student_surname }}</td>
+                        <td>{{ payment.debt }}</td>
+                        <td>{{ payment.payment }}</td>
+                        <td>{{ payment.result }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="chirchiq_salary">
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Зарплата</th>
+                        <th>Оплата</th>
+                        <th>Остаток зарплаты</th>
+                    </tr>
+                {% for information in chirchiq_salary %}
+                    <tr>
+                        <td>{{ information.payment_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ information.username }}</td>
+                        <td>{{ information.teacher_name }}</td>
+                        <td>{{ information.teacher_surname }}</td>
+                        <td>{{ information.salary }}</td>
+                        <td>{{ information.payment }}</td>
+                        <td>{{ information.result }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="capital_chirchiq">
+            <form action="{{ url_for('capital') }}" method="post">
+            <div class="forms">
+                    <input type="text" required name="name_item" placeholder="Имя элемента">
+                    <input type="number" required name="number_item" placeholder="Количество предметов">
+                    <input type="number" required name="amount_item" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+            </div>
+            </form>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Названия</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for capital in capital_chirchiq %}
+                    <tr>
+                        <td>{{ capital.bought_data.strftime('%B %d, %Y')}}</td>
+                        <td>{{ capital.item }}</td>
+                        <td>{{ capital.number_items }}</td>
+                        <td>{{ capital.amount_item }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="overhead_chirchiq">
+            <form action="{{ url_for('overhead') }}" method="post">
+                <div class="forms">
+                    <input type="text"  required  name="reason" placeholder="Причина">
+                    <input type="text"  required  name="amount" placeholder="Количество">
+                    <input type="number"  required  name="sum" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+                </div>
+            </form>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Подробность</th>
+                        <th>Количество</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for overhead in overhead_chirchiq %}
+                    <tr>
+                        <td>{{ overhead.payed_data.strftime('%B %d, %Y') }}</td>
+                        <td>{{ overhead.reason }}</td>
+                        <td>{{ overhead.quantity }}</td>
+                        <td>{{ overhead.sum }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="withdrawal_chirchiq">
+            <form action="{{ url_for('withdrawal') }}" method="post">
+                <div class="forms">
+                    <input type="text" required name="who" placeholder="Кто взял?">
+                    <input type="text" required name="why" placeholder="Почему взял?">
+                    <input type="text" required name="amount" placeholder="Сумма">
+                    <input type="submit" value="Добавить">
+                </div>
+            </form>
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Число</th>
+                        <th>Кто</th>
+                        <th>Почему</th>
+                        <th>Сумма</th>
+                    </tr>
+                {% for capital in withdrawal_chirchiq %}
+                    <tr>
+                        <td>{{ capital.date.strftime('%B %d, %Y') }}</td>
+                        <td>{{ capital.who }}</td>
+                        <td>{{ capital.why }}</td>
+                        <td>{{ capital.amount}}</td>
+
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="chirchiq_debt">
+            <div class="debt_list">
+                <table>
+                    <tr>
+                        <th>Имя пользователя</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Телефон номер</th>
+                        <th>Баланс</th>
+                    </tr>
+                {% for debt in student_debt_chirchiq %}
+                    {% if debt.money != 0 %}
+                    <tr>
+                        <td>{{ debt.username }}</td>
+                        <td>{{ debt.name }}</td>
+                        <td>{{ debt.surname }}</td>
+                        <td>{{ debt.phone }}</td>
+                        <td>{{ debt.money }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="payment" id="chirchiq_profit">
+            <table>
+                <tr>
+                    <th>Все студенты</th>
+                    <th>Все группы</th>
+                    <th>Оплата студентов</th>
+                    <th>Долги</th>
+                    <th>Зарплата учителя</th>
+                    <th>Все капитальные затраты</th>
+                    <th>Все накладные расходы</th>
+                    <th>Все снятие</th>
+                    <th>Вся благотворительность</th>
+                    <th>Все преимущества</th>
+                </tr>
+                <tr>
+                    <td>{{ all_st_chir }}</td>
+                    <td>{{ all_gr_chir }}</td>
+                    <td>{{ all_chir_pay }}</td>
+                    <td>{{ all_debt_chir }}</td>
+                    <td>{{ all_chir_sal }}</td>
+                    <td>{{ all_cap_chirchiq }}</td>
+                    <td>{{ all_over_chir }}</td>
+                    <td>{{ all_with_chir }}</td>
+                    <td>{{ chir_charity.bank_charity }}</td>
+                    <td>{{ profit_chir }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/static/js/new/for%20payment.js"></script>
+</body>
+</html>

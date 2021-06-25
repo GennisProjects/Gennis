@@ -1,0 +1,174 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/new/all_students.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="all_students">
+    <div class="button_subjects">
+    {% if user.director %}
+        <button id="xojakent_studying_students">Ходжикент</button>
+        <button id="gazalkent_studying_students">Газалкент</button>
+        <button id="chirchiq_studying_students">Чирчик</button>
+    {% endif %}
+    </div>
+    <div class="basic_search">
+        <div class="search_students" id="search_for_xojakent" {% if user.director or user.gazalkent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+            <select name="" id="select_xojakent">
+                <option value="Выберите тип поиска">Выберите тип поиска</option>
+                <option value="Поиск по имени">Поиск по имени</option>
+                <option value="Поиск по фамилии">Поиск по фамилии</option>
+                <option value="Поиск по имени пользователя">Поиск по имени пользователя</option>
+            </select>
+        </div>
+        <div>
+            <form action="{{ url_for('search_name') }}" method="post">
+                <div class="search_form" id="name_xojakent">
+                    <input type="text" required name="student" placeholder="Введите имя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('search_surname') }}" method="post">
+                <div class="search_form" id="surname_xojakent">
+                    <input type="text" required name="student" placeholder="Введите фамилию">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('search_username') }}" method="post">
+                <div class="search_form" id="username_xojakent">
+                    <input type="text" required name="student" placeholder="Введите имя пользователя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="basic_search">
+        <div class="search_students" id="search_for_gazalkent" {% if user.director or user.xojakent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+            <select name="" id="select_gazalkent">
+                <option value="Выберите тип поиска">Выберите тип поиска</option>
+                <option value="Поиск по имени">Поиск по имени</option>
+                <option value="Поиск по фамилии">Поиск по фамилии</option>
+                <option value="Поиск по имени пользователя">Поиск по имени пользователя</option>
+            </select>
+        </div>
+        <div>
+            <form action="{{ url_for('search_name2') }}" method="post">
+                <div class="search_form" id="name_gazalkent">
+                    <input type="text" required name="student" placeholder="Введите имя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('search_surname2') }}" method="post">
+                <div class="search_form" id="surname_gazalkent">
+                    <input type="text" required name="student" placeholder="Введите фамилию">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('search_username2') }}" method="post">
+                <div class="search_form" id="username_gazalkent">
+                    <input type="text" required name="student" placeholder="Введите имя пользователя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="basic_search">
+        <div class="search_students" id="search_for_chirchiq" {% if user.director or user.xojakent_admin or user.gazalkent_admin %} style="display: none" {% endif %}>
+            <select name="" id="select_chirchiq">
+                <option value="Выберите тип поиска">Выберите тип поиска</option>
+                <option value="Поиск по имени">Поиск по имени</option>
+                <option value="Поиск по фамилии">Поиск по фамилии</option>
+                <option value="Поиск по имени пользователя">Поиск по имени пользователя</option>
+            </select>
+        </div>
+        <div>
+            <form action="{{ url_for('search_name3') }}" method="post">
+                <div class="search_form" id="name_chirchiq">
+                    <input type="text" required name="student" placeholder="Введите имя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('search_surname3') }}" method="post">
+                <div class="search_form" id="surname_chirchiq">
+                    <input type="text" required name="student" placeholder="Введите фамилию">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('search_username3') }}" method="post">
+                <div class="search_form" id="username_chirchiq">
+                    <input type="text" required name="student" placeholder="Введите имя пользователя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="list_of_students" id="list_of_xojakent_students" {% if user.director or user.gazalkent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+         {% for student in students1 %}
+             {% if student.group1 or student.group2 or student.group3 %}
+            <a href="{{ url_for('student_info',student_id=student.id) }}">
+                <div class="student_card">
+                    {% if student.photo %}
+                    <img src="{{ student.photo }}" alt="">
+                    {% else %}
+                    <img src="/static/img/user_image.png" alt="">
+                    {% endif %}
+                    <p>{{ student.name.lower() }}</p>
+                    <p>{{ student.surname.lower() }}</p>
+                    <p>{{ student.username.lower() }}</p>
+                    <p>{{ student.money }} sum</p>
+                </div>
+            </a>
+             {% endif %}
+        {% endfor %}
+    </div>
+    <div class="list_of_students" id="list_of_gazalkent_students" {% if user.director or user.xojakent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+         {% for student in students2 %}
+             {% if student.group1 or student.group2 or student.group3 %}
+             <a href="{{ url_for('student_info',student_id=student.id) }}">
+                <div class="student_card">
+                    {% if student.photo %}
+                    <img src="{{ student.photo }}" alt="">
+                    {% else %}
+                    <img src="/static/img/user_image.png" alt="">
+                    {% endif %}
+                    <p>{{ student.name.lower() }}</p>
+                    <p>{{ student.surname.lower() }}</p>
+                    <p>{{ student.username.lower() }}</p>
+                    <p>{{ student.money }} sum</p>
+
+                </div>
+             </a>
+             {% endif %}
+        {% endfor %}
+    </div>
+    <div class="list_of_students" id="list_of_chirchiq_students" {% if user.director or user.xojakent_admin or user.gazalkent_admin %} style="display: none" {% endif %}>
+         {% for student in students3 %}
+             {% if student.group1 or student.group2 or student.group3 %}
+             <a href="{{ url_for('student_info',student_id=student.id) }}">
+                             <div class="student_card">
+                    {% if student.photo %}
+                    <img src="{{ student.photo }}" alt="">
+                    {% else %}
+                    <img src="/static/img/user_image.png" alt="">
+                    {% endif %}
+                    <p>{{ student.name.lower() }}</p>
+                    <p>{{ student.surname.lower() }}</p>
+                    <p>{{ student.username.lower() }}</p>
+                    <p>{{ student.money }} sum</p>
+
+                </div>
+             </a>
+             {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<script src="/static/js/new/for%20studying_students.js"></script>
+</body>
+</html>

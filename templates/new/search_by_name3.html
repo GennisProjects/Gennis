@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/search_students.min.css">
+</head>
+<body>
+<div class="basic_search">
+<div class="search_result">
+    <h2>Количество студентов, найденных по запросу "{{ search }}": {{ names.count }}</h2>
+</div>
+<div class="for_icon">
+        <a href="{{ url_for('studying_students') }}"><img src="/static/img/png.png" alt=""></a>
+</div>
+<div class="list_of_students" id="list_of_xojakent_students">
+         {% for student in student_name %}
+             <a href="{{ url_for('student_info',student_id=student.id) }}">
+                <div class="student_card">
+                    {% if student.photo %}
+                    <img src="{{ student.photo }}" alt="">
+                    {% else %}
+                    <img src="/static/img/user_image.png" alt="">
+                    {% endif %}
+                    <p>{{ student.name.lower() }}</p>
+                    <p>{{ student.surname.lower() }}</p>
+                    <p>{{ student.username.lower() }}</p>
+                    <p>{{ student.money }} sum</p>
+                </div>
+             </a>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

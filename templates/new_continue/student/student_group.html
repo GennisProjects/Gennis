@@ -1,0 +1,87 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/teacher_groups.min.css">
+</head>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="teacher_groups_basic">
+    {% if not user.vakilning_ismi and not user.vakilning_familyasi and not user.vakilning_telefon_raqami and not user.vakilning_otchestvasi %}
+        <form action="{{ url_for('fill_data_contract') }}" method="post">
+        <div class="fill_contract">
+            <div class="title">
+                <h2>Нам нужна ваша информация для заключения двустороннего договора !</h2>
+            </div>
+            <input required type="text" name="vakil_name" placeholder="Имя представителя">
+            <input required type="text" name="vakil_surname" placeholder="Фамилия представителя">
+            <input required type="number" name="vakil_phone" placeholder="Номер телефона представителя">
+            <input required type="text" name="vakil_father" placeholder="Отчетво представителя">
+            <input required type="submit" value="Дополнить">
+        </div>
+        </form>
+    {% endif %}
+    <div class="groups">
+    {% if user.vakilning_ismi and user.vakilning_familyasi and user.vakilning_telefon_raqami and user.vakilning_otchestvasi %}
+        {% if group %}
+        <a href="{{ url_for('student_inside_group',group_id=group.id) }}">
+            <div class="each_group">
+                <p>Имя: {{ group.name }}</p>
+                <p>Тип: {{ group.type_of_course }}</p>
+                <p>Цена: {{ group.cost }} sum</p>
+                {% if group.location == 1 %}
+                <p>Расположения: Ходжикент</p>
+                {% endif %}
+                {% if group.location == 2 %}
+                <p>Расположения: Газалкент</p>
+                {% endif %}
+                {% if group.location == 3 %}
+                <p>Расположения: Чирчик</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endif %}
+        {% if group2 %}
+        <a href="{{ url_for('student_inside_group',group_id=group2.id) }}">
+            <div class="each_group">
+                <p>Имя: {{ group2.name }}</p>
+                <p>Тип: {{ group2.type_of_course }}</p>
+                <p>Цена: {{ group2.cost }} sum</p>
+                {% if group2.location == 1 %}
+                <p>Расположения: Ходжикент</p>
+                {% endif %}
+                {% if group2.location == 2 %}
+                <p>Расположения: Газалкент</p>
+                {% endif %}
+                {% if group2.location == 3 %}
+                <p>Расположения: Чирчик</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endif %}
+        {% if group3 %}
+        <a href="{{ url_for('student_inside_group',group_id=group3.id) }}">
+            <div class="each_group">
+                <p>Имя: {{ group3.name }}</p>
+                <p>Тип: {{ group3.type_of_course }}</p>
+                <p>Цена: {{ group3.cost }} sum</p>
+                {% if group3.location == 1 %}
+                <p>Расположения: Ходжикент</p>
+                {% endif %}
+                {% if group3.location == 2 %}
+                <p>Расположения: Газалкент</p>
+                {% endif %}
+                {% if group3.location == 3 %}
+                <p>Расположения: Чирчик</p>
+                {% endif %}
+            </div>
+        </a>
+        {% endif %}
+    {% endif %}
+    </div>
+</div>
+</body>
+</html>

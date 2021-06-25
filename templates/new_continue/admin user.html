@@ -1,0 +1,42 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/teacher_list.min.css">
+</head>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="all_teachers">
+    <div class="list_of_students" id="list_of_chirchiq_students" >
+         {% for admin in admins %}
+            <a href="{{ url_for('student_profile2',student_id=admin.id) }}">
+                <div class="student_card">
+                    {% if admin.photo %}
+                        <img src="{{ admin.photo }}" alt="">
+                    {% else %}
+                        <img src="/static/img/user_image.png" alt="">
+                    {% endif %}
+                    <p>{{ admin.name.lower() }}</p>
+                    <p>{{ admin.surname.lower() }}</p>
+                    <p>{{ admin.username.lower() }}</p>
+                    <p>{{ admin.phone }}</p>
+                    {% if admin.xojakent_admin %}
+                    <p>Ходжикент</p>
+                    {% endif %}
+                    {% if admin.gazalkent_admin %}
+                    <p>Газалкент</p>
+                    {% endif %}
+                    {% if admin.chirchiq_admin %}
+                    <p>Чирчик</p>
+                    {% endif %}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+<script src="/static/js/new/for%20studying_students.js"></script>
+</body>
+</html>

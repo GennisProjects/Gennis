@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/bootsrap/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/static/bootsrap/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/static/css/for_home/slick.css">
+    <link rel="stylesheet" href="/static/css/for_home/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/for_home/style.min.css">
+</head>
+<body>
+
+<section class="basic-page" id="home">
+    <header>
+        <nav>
+            <div class="container">
+                <ul class="menu">
+                    <li class="menu_item"><img src="/static/img/for_home_icons/home-solid.svg" alt=""><a href="#home" id="a1" class="menu_link">Главный</a></li>
+                    <li class="menu_item"><img src="/static/img/for_home_icons/image-solid.svg" alt=""><a href="#gallery" id="a2" class="menu_link">Галерея</a></li>
+                    <li class="menu_item"><img src="/static/img/for_home_icons/newspaper-regular.svg" alt=""><a href="#news" id="a3" class="menu_link">События</a></li>
+                    <li class="menu_item"><img src="/static/img/for_home_icons/comment-dots-regular.svg" alt=""><a href="#comments" id="a4" class="menu_link">Комментарии</a></li>
+                    <li class="menu_item"><img src="/static/img/for_home_icons/book-solid.svg" alt=""><a href="#subject" id="a5" class="menu_link">Предметы</a></li>
+                    <li class="menu_item"><img src="/static/img/for_home_icons/map-marked-alt-solid.svg" alt=""><a href="#location" id="a6" class="menu_link">Локации</a></li>
+                    <li class="menu_item"><img src="/static/img/for_home_icons/question-solid.svg" alt=""><a href="#about" id="a7" class="menu_link">О Нас</a></li>
+                    <li class="menu_item"><img src="/static/img/for_home_icons/sign-in-alt-solid.svg" alt=""><a href="{{ url_for('login') }}" id="a8" class="menu_link">Логин</a></li>
+                </ul>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <section class="promo">
+        <div class="container">
+            <div class="promo_box">
+                <div class="promo_logo">
+                    <img class="promo_logo_img" src="/static/img/for_home_icons/logo%20gennis%20campus.png" alt="Logo">
+                    <div class="promo_logo_title">Gennis</div>
+                </div>
+                <div class="promo_info">
+                    <img src="/static/img/for_home_icons/childrens.png" alt="Student">
+                    <div class="promo_info_desc">Учебный центр Gennis сделает все возможное, чтобы помочь вам добиться успеха. Учитесь вместе с нами и добивайтесь того, чего хотите.</div>
+                    </div>
+                <div class="promo_desc">Учебный центр Gennis сделает все возможное, чтобы помочь вам добиться успеха. Учитесь вместе с нами и добивайтесь того, чего вы хотите.</div>
+                <a href="{{ url_for('register') }}"><div class="promo_btn">Регистрация</div></a>
+            </div>
+            <div class="promo_box_2">
+                <img src="/static/img/for_home_icons/childrens.png" alt="Student">
+            </div>
+        </div>
+    </section>
+</section>
+
+<section class="gallery" id="gallery">
+    <div class="gallery__title">Галерея</div>
+    <div class="container">
+        <div class="gallery__box">
+            <div class="gallery-gallery__box w-2 h-4">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/admin.jpg"><img src="/static/img/for_home_images/admin.jpg" alt="nature"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-gallery__box w-3 h-2 h-9">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/1-room.jpg"><img src="/static/img/for_home_images/1-room.jpg" alt="nature"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-gallery__box w-1 h-2  w-9">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/2-room.jpg"><img src="/static/img/for_home_images/2-room.jpg" alt="nature"></a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="gallery-gallery__box w-2 h-3">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/3-room.jpg"><img src="/static/img/for_home_images/3-room.jpg" alt="nature"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-gallery__box w-2 h-2">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/4-room.jpg"><img src="/static/img/for_home_images/4-room.jpg" alt="nature"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-gallery__box w-2 h-2">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/meeting.jpg"><img src="/static/img/for_home_images/meeting.jpg" alt="nature"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-gallery__box w-2 h-2 h-9">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/heaven's%20garden.jpg"><img src="/static/img/for_home_images/heaven's%20garden.jpg" alt="nature"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-gallery__box w-2 h-1">
+                <div class="gallery-item">
+                    <div class="gallery-item_image">
+                        <a class="gallery-item_image_link" href="/static/img/for_home_images/hall.jpg"><img src="/static/img/for_home_images/hall.jpg" alt="nature"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="events" id="news">
+    <div class="container">
+        <div class="events_title">
+            События
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="events_box">
+                    <div class="events_info">
+                        <div class="events_info_desc event_1">
+                            Assalomu alaykum aziz oq’uvchilar sizlarni 28-may kuni bolib otadigan block testimizga taklif qilamiz hurmat bilan gennius campus team
+                        </div>
+                        <div class="events_info_links">
+                            <div data-modal="event_1" class="events_btn">Ещё</div>
+                        </div>
+                    </div>
+                    <div class="events_defiz"></div>
+                    <div class="events_img">
+                        <img src="/static/img/for_home_images/block%20test.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-12">
+                <div class="events_box">
+                    <div class="events_info">
+                        <div class="events_info_desc event_2">
+                            Assalomu alaykum hammaga, sizlarni chirchiq shahrida ochilayotgan yangi o’quv markazimizning ochilish marosimiga taklif etamiz.
+                        </div>
+                        <div class="events_info_links">
+                            <div data-modal="event_2" class="events_btn">Ещё</div>
+                        </div>
+                    </div>
+                    <div class="events_defiz"></div>
+                    <div class="events_img">
+                        <img src="/static/img/for_home_images/4-room.jpg" alt="education image">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-12">
+                <div class="events_box">
+                    <div class="events_info">
+                        <div class="events_info_desc event_3">
+                            Assalomu alykum aziz o’quvchilar,IELTS o’qiyotgan o’quvchlarni 20-may kuni bo’ladigan IELTS imtihoniga taklif qilamiz, imtihonga kirish pullarni o’quv markazimiz tomonidan otkaziladi.
+                        </div>
+                        <div class="events_info_links">
+                            <div data-modal="event_3" class="events_btn">Ещё</div>
+                        </div>
+                    </div>
+                    <div class="events_defiz"></div>
+                    <div class="events_img">
+                        <img src="/static/img/for_home_images/2-room.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="comment" id="comments">
+    <div class="comment__title">Комментарии</div>
+        <div class="container">
+            <div class="comment__overflow">
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Xudoybergan</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">Ассалому аллякум мен ушбу о'кув марказида 2 йилдан бери та'лим оламан ва менга ушбу о'кув маркази иуда йокади ва айнан шу йили IELTS имтихонидан муваффакиятли отдим. Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.</div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+                <div class="comment__element">
+                    <div class="comment__element_info">
+                        <div class="comment__element_info_img">
+                            <img src="/static/img/for_home_icons/user.png" alt="User">
+                        </div>
+                        <div class="comment__element_info_fio">
+                            <div class="comment__element_info_fio_name">Ulug'bek</div>
+                            <div class="comment__element_info_fio_surname">Fatxullayev</div>
+                        </div>
+                    </div>
+                    <div class="comment__element_defiz"></div>
+                    <div class="comment__element_desc">
+                        Assalomu alyakum men ushbu o’quv markazida 2 yildan beri ta’lim olaman  va menga ushbu o’quv markazi juda yoqadi va aynan shu yili IELTS imtihonidan muvaffaqiyatli o’tdim.  Bunaqangi yaxwi ball yigishim uchun aynan shu o’quvmarkazi menga yordam berdi.
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="subject" id="subject">
+    <div class="subject_title">Предметы</div>
+    <div class="container">
+        <div class="subject__hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+        <div class="subject__list">
+            <nav>
+                <ul class="subject__list_menu">
+                    <li class="subject__list_menu_item_title">Предметы</li>
+                    <li class="subject__list_menu_item active_subject_item" data-subject="Matematika">Математика</li>
+                    <li class="subject__list_menu_item" data-subject="Ingliz tili">Aнглийский язык</li>
+                    <li class="subject__list_menu_item" data-subject="Fizika">Физика</li>
+                    <li class="subject__list_menu_item" data-subject="Rus tili">Русский язык</li>
+                    <li class="subject__list_menu_item" data-subject="Ona tili va Adabiyot">Родной язык и литература</li>
+                    <li class="subject__list_menu_item" data-subject="Tarix">История</li>
+                    <li class="subject__list_menu_item" data-subject="Kimyo">Химия</li>
+                    <li class="subject__list_menu_item" data-subject="Biologiya">Биология</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="subject__box">
+            <div class="subject__box_item Math_box">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Math_box">
+                <div class="subject__box_item_title">Abiturient</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">350 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item English_box display_none">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Speaking club: В неделю 1 раз</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Movie club: В неделю 1 раз</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item English_box display_none">
+                <div class="subject__box_item_title">Intensive</div>
+
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">400 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 7-9</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Speaking club: В неделю 2 раз</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Movie club: В неделю 2 раз</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item English_box display_none">
+                <div class="subject__box_item_title">Super Intensive</div>
+
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">600 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 4-5</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Speaking club: В неделю 2 раз</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Movie club: В неделю 2 раз</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Подготовка поступления в зарубеж</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item English_box display_none">
+                <div class="subject__box_item_title">Rocket</div>
+
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">800 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 2-3</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Speaking club: В неделю 2 раз</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Movie club: В неделю 2 раз</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Подготовка поступления в зарубеж</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Physic_box display_none">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Physic_box display_none">
+                <div class="subject__box_item_title">Abiturient</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">350 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Russia_box display_none">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Russia_box display_none">
+                <div class="subject__box_item_title">Intensive</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">450 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока: 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников:</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject__box_item Mother_box display_none">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Mother_box display_none">
+                <div class="subject__box_item_title">Abiturient</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">350 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item History_box display_none">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item History_box display_none">
+                <div class="subject__box_item_title">Abiturient</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">350 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Chemistry_box display_none">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Chemistry_box display_none">
+                <div class="subject__box_item_title">Abiturient</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">350 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                        <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Biology_box display_none">
+                <div class="subject__box_item_title">Standard</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">200 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                       <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="subject__box_item Biology_box display_none">
+                <div class="subject__box_item_title">Abiturient</div>
+                <div class="subject__box_item_info">
+                    <div class="subject__box_item_info_price">350 000 сум</div>
+                    <div class="subject__box_item_info_column_sides">
+                        <div class="subject__box_item_info_column_sides_menu">
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество уроков: В неделю 3 раза.</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Продолжительность урока 90 минут</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Количество учеников 13-17</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Внеклассные занятия с Менторами</div>
+                            <div class="subject__box_item_info_column_sides_menu_item">Советы для выбора специальности и образования от специалистов</div>
+                        </div>
+                    </div>
+                    <div class="subject__box_item_info_phone">
+                       <a href="{{ url_for('register') }}"><div class="subject__box_item_info_phone_btn">
+                            Регистрация
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="map" id="location">
+    <iframe class="map_iframe Gazalkent" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4101.729060808203!2d69.7693005273712!3d41.561724040789784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xecd7bb024bc3192b!2sGennis%20Campus!5e0!3m2!1sru!2s!4v1621155954340!5m2!1sru!2s" width="100%" height="630" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe class="map_iframe Xojakent display_none" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.1268827722315!2d69.93801504706664!3d41.631388767449415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5bffca52f4445fc0!2sGennis%20Campus!5e0!3m2!1sru!2s!4v1621246754497!5m2!1sru!2s" width="100%" height="630" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="map_locations">
+        <div class="map_locations_title">Gennis Campus филиалы</div>
+        <div class="map_locations_list">
+            <div class="map_locations_list_item" data-map="Xojakent">Xo'jakent филиал</div>
+            <div class="map_locations_list_item" data-map="Gazalkent">Gazalkent филиал</div>
+            <div class="map_locations_list_item" data-map="Chirchiq">Chirchiq филиал</div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer" id="about">
+    <div class="footer_wrapper">
+        <div>
+            <div class="footer_info">
+                <div class="footer_info_title">О Нас</div>
+                <div class="footer_info_subtitle">
+                    Gennis
+                </div>
+                <div class="footer_info_desc">Мы начали работу в 2017 году.
+
+                                            Первый филиал был открыт в городе Хожакент.
+
+                                            В 2019 году открыли филиал в Газалкенте.
+
+                                            В 2021 году открыли филиал в городе Чирчик.
+
+                                            Ежегодно проводим тренинги в школах, колледжах и других учебных заведениях.
+
+                                            Команда "Gennis" побывала на селекторе с президентом и с министрами высшего и среднеспециального образования по проекту улучшения оброзования молодежи в стране</div>
+                <div class="footer_info_phone">
+                    Тел: 99-365-68-45
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="footer_social">
+                <div class="footer_social_copyright">
+                    <div class="footer_social_copyright_title">Gennis</div>
+
+                </div>
+                <div class="footer_social_links">
+                    <div class="footer_social_links_devider"></div>
+                    <a href="https://www.instagram.com/genniscampus/" class="footer_social_links_item">
+                        <img src="/static/img/for_home_icons/instagram.svg" alt="">
+                    </a>
+                    <a href="https://www.facebook.com/Inovativeschool/?ref=pages_you_manage" class="footer_social_links_item">
+                        <img src="/static/img/for_home_icons/facebook.svg" alt="">
+                    </a>
+                    <a href="https://t.me/gennis_info" class="footer_social_links_item">
+                        <img src="/static/img/for_home_icons/telegram.svg" alt="">
+                    </a>
+                    <a href="https://vm.tiktok.com/ZSJuLxg5V/" class="footer_social_links_item">
+                        <img src="/static/img/for_home_icons/tiktok-1.svg" alt="">
+                    </a>
+                </div>
+                <div class="footer_social_creator">Monster</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="overlay">
+    <div class="modal" id="event_1">
+        <div class="modal__close">&times;</div>
+        <div class="modal__title">Block test</div>
+        <div class="modal__info">
+            <div  class="modal__info_desc Event_1">
+                Assalomu alaykum aziz oq’uvchilar sizlarni 28-may kuni bolib otadigan block testimizga taklif qilamiz hurmat bilan gennis campus team
+
+            </div>
+            <div class="modal__info_link">
+            </div>
+            <div class="modal__info_img">
+                <img src="/static/img/for_home_images/block%20test.jpg" alt="block image">
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="event_2">
+        <div class="modal__close">&times;</div>
+        <div class="modal__title">O'quv markazi</div>
+        <div class="modal__info">
+            <div class="modal__info_desc Event_2">
+                Assalomu alaykum hammaga, sizlarni chirchiq shahrida ochilayotgan yangi o’quv markazimizning ochilish marosimiga taklif etamiz.
+            </div>
+            <div class="modal__info_link">
+            </div>
+            <div class="modal__info_img">
+                <img src="/static/img/for_home_images/4-room.jpg" alt="education image">
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="event_3">
+        <div class="modal__close">&times;</div>
+        <div class="modal__title">IELTS</div>
+        <div class="modal__info">
+            <div class="modal__info_desc Event_3">
+                Assalomu alykum aziz o’quvchilar,IELTS o’qiyotgan o’quvchlarni 20-may kuni bo’ladigan IELTS imtihoniga taklif qilamiz, imtihonga kirish pullarni o’quv markazimiz tomonidan otkaziladi.
+            </div>
+            <div class="modal__info_link">
+            </div>
+            <div class="modal__info_img">
+                <img src="/static/img/for_home_images/2-room.jpg" alt="IELTS image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#up" class="pageup">
+    <img src="/static/img/for_home_icons/arrow-up-solid.svg" alt="up">
+</a>
+
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/static/for_home_js/jquery.magnific-popup.js"></script>
+<script src="/static/for_home_js/slick.min.js"></script>
+<script src="/static/for_home_js/script.js"></script>
+
+
+</body>
+</html>

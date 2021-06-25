@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/extra_user_profile.min.css">
+    <title>Gennis</title>
+</head>
+<body>
+<div class="main_profile">
+        <div class="user_profile">
+            <div class="close_button">
+                <button>&cross;</button>
+            </div>
+            <div class="edit_form">
+                <button class="edit_button">Редактировать профиль</button>
+                <button class="cancel_edit">Отмена</button>
+                <div class="go_to_change">
+                    <form action="{{ url_for('change_infos_user') }}" method="post">
+                        <input type="password" name="password" placeholder="Введите свой пароль">
+                        <input type="submit" value="Перейти к изменению">
+                    </form>
+                </div>
+            </div>
+            <div class="for_img2">
+            {% if user %}
+                {% if user.photo %}
+                    <img src="{{ user.photo }}" alt="">
+                {% else %}
+                    <img src="/static/img/user_image.png" alt="">
+                {% endif %}
+            {% endif %}
+            {% if teacher %}
+                {% if teacher.photo %}
+                    <img src="{{ teacher.photo }}" alt="">
+                {% else %}
+                   <img src="/static/img/user_image.png" alt="">
+                {% endif %}
+            {% endif %}
+                {% if user %}
+                    <form action="{{ url_for('photo_add') }}" method="post" enctype="multipart/form-data">
+                        <div class="camera">
+                            <label for="upload" class="image_upload">
+                                {{ form.image(class = "upload_img",id="upload")}}
+                            </label>
+                        </div>
+                        <div class="ready_photo">
+                            <input type="submit" value="&check;">
+                        </div>
+                    </form>
+                {% endif %}
+                {% if teacher %}
+                    <form action="{{ url_for('photo_teacher') }}" method="post" enctype="multipart/form-data">
+                        <div class="camera">
+                            <label for="upload" class="image_upload">
+                                {{ form.image(class = "upload_img",id="upload")}}
+                            </label>
+                        </div>
+                        <div class="ready_photo">
+                            <input type="submit" value="&check;">
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="user_info">
+            {% if user %}
+                <h2>{{ user.name }} {{ user.surname }}/{{ user.age }}</h2>
+                {% if user.subject_1 %}
+                    <h3>Учебные предметы:</h3>
+                    <p>{{ user.subject_1 }}{% if user.subject_2 %}/{{ user.subject_2 }}{% endif %}{% if user.subject_3 %}/{{ user.subject_3 }}{% endif %}</p>
+                {% endif %}
+                <h3>Телефон нумер:</h3>
+                <p>{{ user.phone }}</p>
+                {% if not user.director and not user.xojakent_admin and not user.gazalkent_admin and not user.chirchiq_admin %}
+                <h3>Телефон родителей:</h3>
+                <p>{{ user.parent_phone }}</p>
+                {% if subject_1 %}
+                    <h3>Группы:</h3>
+                    <p>{{ subject_1.name }}{% if subject_2 %}/{{ subject_2.name }}{% endif %}{% if subject_3 %}/{{ subject_3.name }}{% endif %}</p>
+                {% endif %}
+                {% endif %}
+            {% endif %}
+            {% if teacher %}
+                <h2>{{ teacher.name }} {{ teacher.surname }}/{{ teacher.age }}</h2>
+                <h3>Телефон нумер:</h3>
+                <p>{{ teacher.phone }}</p>
+                <h3>Предмет:</h3>
+                <p>{{ teacher.subject }}</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+<script src="/static/js/new/user_profile_mobile.js"></script>
+</body>
+</html>

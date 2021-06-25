@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/create_group.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+<form action="{{ url_for('add_group',group_id=group_id) }}" method="post">
+<div class="basic">
+    <h1>Добавить группу {{ group.name }}</h1>
+    <div class="for_icon">
+        <a href="/all_students"><img src="/static/img/png.png" alt=""></a>
+    </div>
+    {% if student %}
+    <div class="tables">
+        <table>
+            <caption>Студенты по ({{ group.subject }})</caption>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Пользователь</th>
+                <th>Возраст</th>
+                <th>Комментарий</th>
+                <th>Дата регистрации</th>
+                <th></th>
+            </tr>
+            {% for student in students %}
+                {% if user.locations == student.locations and not student.xojakent_admin and not student.director and not student.gazalkent_admin and not student.chirchiq_admin %}
+            <tr>
+                <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                <td>{{ student.surname }}</td>
+                <td>{{ student.username }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.comment }}</td>
+                <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+                <td><input type="checkbox" data-id="{{ student.id }}" {% if student.for_group %}checked{% endif %} class="checkbox"></td>
+            </tr>
+
+                {% endif %}
+            {% endfor %}
+
+        </table>
+    </div>
+    {% endif %}
+    {% if student %}
+    <div class="ready_button">
+        <button>&checkmark;</button>
+    </div>
+    {% endif %}
+</div>
+ </form>
+<script src="/static/js/new/create_add_group.js"></script>
+</body>
+</html>

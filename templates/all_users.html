@@ -1,0 +1,46 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .all_users{
+        margin-left: 250px;
+    }
+</style>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="all_users">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Username</th>
+            <th>Location</th>
+            <th>Delete</th>
+        </tr>
+        {% for users in all_users %}
+            {% if not users.director and not users.gazalkent_admin and not users.chirchiq_admin and not users.xojakent_admin %}
+        <tr>
+            <td>{{ users.name }}</td>
+            <td>{{ users.surname }}</td>
+            <td>{{ users.username }}</td>
+            {% if users.locations == 1 %}
+            <td>Xojakent</td>
+            {% endif %}
+            {% if users.locations == 2 %}
+            <td>Gazalkent</td>
+            {% endif %}
+            {% if users.locations == 3 %}
+            <td>Chirchiq</td>
+            {% endif %}
+            <td><a href="{{ url_for('delete_users',id=users.id) }}"><button>&cross;</button></a></td>
+        </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

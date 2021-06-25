@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/nav.min.css">
+</head>
+<body>
+{% for username in all_usernames %}
+    {% if user.username != username.username %}
+        <p class="username1" hidden>{{ username.username }}</p>
+    {% endif %}
+{% endfor %}
+{% for username2 in all_usernames2 %}
+    {% if user.username != username2.username %}
+        <p class="username2" hidden>{{ username2.username }}</p>
+    {% endif %}
+{% endfor %}
+    <div class="edit_profile">
+        <h1 class="error_password">Пароли не совпадают!!!</h1>
+         <div class="flash" id="flash1">
+            <p>Это имя пользователя уже занято</p>
+            <button id="close">&cross;</button>
+        </div>
+        <div class="edit_input">
+            <h1>Редактировать профиль</h1>
+            <form action="{{ url_for('change_password') }}" method="post">
+                <input required type="text" id="username_typing" name="username" value="{% if user %}{{ user.username }}{% endif %}{% if teacher %}{{ teacher.username }}{% endif %}">
+                <input required type="password" id="password1" placeholder="Новый пароль">
+                <input required name="password" type="password" id="password2" placeholder="Подтвердите пароль">
+                <div class="show_password">
+                    <input type="checkbox" class="checkbox">
+                    <label>Показать пароль</label>
+                </div>
+                <div class="submit_cancel">
+                    <input type="submit" value="Изменить">
+                    <button><a href="{{ url_for('new_home') }}">Отмена</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/new/edit_profile.js"></script>
+    <script src="/static/js/new/flash.js"></script>
+</body>
+</html>

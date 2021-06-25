@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0098da;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: #0098da;
+  width: 500px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.flash {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: #00568e;
+  border-radius: 30px;
+  padding: 10px;
+  color: white;
+  margin: 0;
+  font-size: 25px;
+  width: 400px;
+}
+
+.text_flash {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+}
+
+.flash .text_flash h2 {
+  margin: 0 25px 0 0;
+  text-align: center;
+}
+
+.flash .text_flash span {
+  cursor: pointer;
+}
+
+.for_label {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+
+.for_icon_image {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.for_icon_image img {
+  align-self: center;
+  width: 200px;
+}
+
+.for_input {
+  display: flex;
+  flex-direction: column;
+}
+
+.for_input input {
+  align-self: center;
+  width: 300px;
+  height: 45px;
+  font-size: 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+  background-color: #00568e;
+}
+
+.for_input input::placeholder {
+  color: white;
+}
+
+.for_input input:focus {
+  outline: none;
+}
+
+.for_input .show_password {
+  margin: 5px 0;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.for_input .show_password input {
+  width: 30px;
+  align-self: center;
+}
+
+.for_input .show_password label {
+  margin-top: 15px;
+  margin-left: 10px;
+  font-size: 20px;
+  align-self: center;
+  color: white;
+}
+
+.for_input input[type=submit] {
+  width: 100px;
+  height: 50px;
+  background-color: #00568e;
+  color: white;
+  cursor: pointer;
+}
+
+.for_input input[type=submit]:active {
+  padding: 12px;
+  transform: scale(0.98);
+}
+
+.link_register {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.link_register a {
+  margin-left: 20px;
+  text-decoration: none;
+  background-color: #00568e;
+  color: white;
+  padding: 4px;
+  border-radius: 20px;
+}
+
+.link_register p {
+  margin-top: 2px;
+}
+
+/*# sourceMappingURL=style.css.map */

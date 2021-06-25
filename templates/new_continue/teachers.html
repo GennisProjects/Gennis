@@ -1,0 +1,71 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/teacher_list.min.css">
+</head>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="all_teachers">
+    <div class="basic_search">
+        <div class="search_students" id="search_for_xojakent">
+            <select name="" id="select_xojakent">
+                <option value="Выберите тип поиска">Выберите тип поиска</option>
+                <option value="Поиск по имени">Поиск по имени</option>
+                <option value="Поиск по фамилии">Поиск по фамилии</option>
+                <option value="Поиск по имени пользователя">Поиск по имени пользователя</option>
+            </select>
+        </div>
+        <div>
+            <form action="{{ url_for('teacher_search_name') }}" method="post">
+                <div class="search_form" id="name_xojakent">
+                    <input required type="text" name="teacher_name" placeholder="Введите имя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('teacher_search_surname') }}" method="post">
+                <div class="search_form" id="surname_xojakent">
+                    <input required type="text" name="teacher_surname" placeholder="Введите фамилию">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('teacher_search_username') }}" method="post">
+                <div class="search_form" id="username_xojakent">
+                    <input required type="text" name="teacher_username" placeholder="Введите имя пользователя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="list_of_students" id="list_of_chirchiq_students" >
+         {% for teacher in teachers %}
+            <a href="{{ url_for('teacher_profile',id=teacher.id) }}">
+                <div class="student_card">
+                    {% if teacher.photo %}
+                        <img src="{{ teacher.photo }}" alt="">
+                    {% else %}
+                        <img src="/static/img/user_image.png" alt="">
+                    {% endif %}
+                    <p>{{ teacher.name.lower() }}</p>
+                    <p>{{ teacher.surname.lower() }}</p>
+                    <p>{{ teacher.subject }}</p>
+                    {% if user.xojakent_admin or user.director %}
+                    <p>Зарплата: {{ teacher.salary }}</p>
+                    {% endif %}
+                    {% if user.gazalkent_admin or user.director %}
+                    <p>Зарплата: {{ teacher.salary_for_gazalkent }}</p>
+                    {% endif %}
+                    {% if user.chirchiq_admin or user.director %}
+                    <p>Зарплата: {{ teacher.salary_for_chirchiq }}</p>
+                    {% endif %}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+<script src="/static/js/new/for%20studying_students.js"></script>
+</body>
+</html>

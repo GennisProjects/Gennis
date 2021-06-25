@@ -1,0 +1,130 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/inside_group.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+{% for name in groups %}
+    {% if name.name != group.name %}
+    <p  class="names" hidden>{{ name.name }}</p>
+    {% endif %}
+{% endfor %}
+<div class="basic">
+    <div class="for_icon">
+        <a href="{{ url_for('dir_groups') }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+    <div class="group">
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+    <div class="for_flash">
+        <h3>{{ message }} !</h3>
+        <button class="close_flash">&cross;</button>
+    </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+        <div class="group_name">
+            <h2>{{ group.name }}</h2>
+            <img class="edit" src="/static/img/icons/pen-solid.svg" alt="">
+            <button class="to_delete_group">&cross;</button>
+        </div>
+        <div class="rename_name">
+            <form action="{{ url_for('rename_group',id=group.id) }}" method="post">
+                <input type="text" required class="name_input" name="name" value="{{ group.name }}">
+                <input type="submit" value="Изменять">
+            </form>
+        </div>
+        <div class="teacher_location">
+        {% if group.teacher_1 != 0 %}
+            <div class="teach_settings">
+                <h3>{{ group.teacher_name.lower() }} {{ group.teacher_surname.lower() }}</h3>
+                <button class="to_delete">&cross;</button>
+            </div>
+        {% else %}
+            <div class="add_teacher">
+                <form action="{{ url_for('add_teacher',group_id=group.id) }}" method="post">
+                    <select name="names" id="">
+                        {% for teacher in teachers %}
+                            <option value="{{ teacher.id }}">{{ teacher.name }}/{{ teacher.surname }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Добавить">
+                </form>
+            </div>
+        {% endif %}
+            <div class="message_teacher">
+                <p>Вы действительно хотите удалить учителя?</p>
+                <div class="teacher_button">
+                    <button class="to_cancel">&cross;</button>
+                    <a href="{{ url_for('delete_teacher1',id=group.id,gr=group.teacher_1) }}"><button>&checkmark;</button></a>
+                </div>
+            </div>
+            <div class="message_group">
+                <p>Вы действительно хотите удалить группу?</p>
+                <div class="group_button">
+                    <button class="to_cancel_group">&cross;</button>
+                    <a href="{{ url_for('delete_group',group_id=group.id,teacher_id=group.teacher_1,subject=group.subject) }}"><button>&checkmark;</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="students_location">
+            <button class="transfer_button">Переход в другую группу</button>
+            <button class="delete_students">Удалить студентов</button>
+            <button class="attendance_list"><a href="{{ url_for('see_att',id=group.id) }}">Посмотреть посещаемость</a></button>
+            <table>
+                <caption>Студенты</caption>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Имя пользователя</th>
+                    <th>Возраст</th>
+                    <th>Баланс</th>
+                    <th class="th_transfer">Перевод</th>
+                    <th class="th_delete">Удалить</th>
+                </tr>
+                {% for st in student %}
+                <tr>
+                    <td><a href="{{ url_for('student_info',student_id=st.id) }}">{{ st.name.lower() }}</a></td>
+                    <td>{{ st.surname.lower() }}</td>
+                    <td>{{ st.username.lower() }}</td>
+                    <td>{{ st.age }}</td>
+                    <td>{{ st.money }}</td>
+                    <td class="td_input"><input type="checkbox" data-id="{{ st.id }}" {% if st.for_moved %}checked{% endif %} class="checkbox"></td>
+                    <td class="td_delete"><a href="{{ url_for('delete_student',id=st.id,gr_id=group.id) }}"><button>&cross;</button></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="move_button">
+            <a href="{{ url_for('show_group',group_id=group.id) }}"> <button>Переместить в группы</button></a>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    const checkbox = document.querySelectorAll('.checkbox');
+    for (let d = 0; d < checkbox.length; d++) {
+        const checked = checkbox[d]
+        checked.onchange = function (event) {
+            const check_id = event.target.dataset['id']
+            const checking = event.target.checked
+            console.log(check_id)
+            fetch('/move_to_group/' + check_id, {
+                method: "POST",
+                body: JSON.stringify({
+                    'completed': checking
+                }),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+        }
+    }
+</script>
+<script src="/static/js/new/inside_group.js"></script>
+</html>

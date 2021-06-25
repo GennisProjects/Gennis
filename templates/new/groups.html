@@ -1,0 +1,190 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/new/for_groups.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="all_students">
+    <div class="button_subjects">
+    {% if user.director %}
+        <button id="xojakent_studying_students">Ходжикент</button>
+        <button id="gazalkent_studying_students">Газалкент</button>
+        <button id="chirchiq_studying_students">Чирчик</button>
+    {% endif %}
+    </div>
+    <div class="basic_search">
+        <div class="search_students" id="search_for_xojakent" {% if user.director or user.gazalkent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+            <select name="" id="select_xojakent">
+                <option value="Выберите тип поиска">Выберите тип поиска</option>
+                <option value="Поиск по имени">Поиск по имени</option>
+                <option value="Поиск по фамилии">Поиск по учителю</option>
+                <option value="Поиск по имени пользователя">Поиск по предмет</option>
+            </select>
+        </div>
+        <div>
+            <form action="{{ url_for('group_search_name') }}" method="post">
+                <div class="search_form" id="name_xojakent">
+                    <input type="text" name="group_name" placeholder="Введите имя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('group_search_teacher') }}" method="post">
+                <div class="search_form" id="surname_xojakent">
+                    <input type="text" name="group_teacher" placeholder="Введите имя учителя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('group_search_subject') }}" method="post">
+                <div class="search_form" id="username_xojakent">
+                    <select name="group_subject">
+                        <option  value="Ingliz tili">Ingliz tili</option>
+                        <option  value="Rus tili">Rus tili</option>
+                        <option  value="Matematika">Matematika</option>
+                        <option  value="Tarix">Tarix</option>
+                        <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+                        <option  value="Kimyo">Kimyo</option>
+                        <option  value="Fizika">Fizika</option>
+                        <option  value="Biologiya">Biologiya</option>
+                        <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+                        <option value="Avto Maktab">Avto Maktab</option>
+                        <option value="Web Dasturchilik">Web Dasturchilik</option>
+                    </select>
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="basic_search">
+        <div class="search_students" id="search_for_gazalkent" {% if user.director or user.xojakent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+            <select name="" id="select_gazalkent">
+                <option value="Выберите тип поиска">Выберите тип поиска</option>
+                <option value="Поиск по имени">Поиск по имени</option>
+                <option value="Поиск по фамилии">Поиск по учителю</option>
+                <option value="Поиск по имени пользователя">Поиск по предмет</option>
+            </select>
+        </div>
+        <div>
+            <form action="{{ url_for('group_search_name2') }}" method="post">
+                <div class="search_form" id="name_gazalkent">
+                    <input type="text" name="group_name" placeholder="Введите имя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('group_search_teacher2') }}" method="post">
+                <div class="search_form" id="surname_gazalkent">
+                    <input type="text" name="group_teacher" placeholder="Введите имя учителя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('group_search_by_subject2') }}" method="post">
+                <div class="search_form" id="username_gazalkent">
+                    <select name="group_subject">
+                        <option  value="Ingliz tili">Ingliz tili</option>
+                        <option  value="Rus tili">Rus tili</option>
+                        <option  value="Matematika">Matematika</option>
+                        <option  value="Tarix">Tarix</option>
+                        <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+                        <option  value="Kimyo">Kimyo</option>
+                        <option  value="Fizika">Fizika</option>
+                        <option  value="Biologiya">Biologiya</option>
+                        <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+                        <option value="Avto Maktab">Avto Maktab</option>
+                        <option value="Web Dasturchilik">Web Dasturchilik</option>
+                    </select>
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="basic_search">
+        <div class="search_students" id="search_for_chirchiq" {% if user.director or user.xojakent_admin or user.gazalkent_admin %} style="display: none" {% endif %}>
+            <select name="" id="select_chirchiq">
+                <option value="Выберите тип поиска">Выберите тип поиска</option>
+                <option value="Поиск по имени">Поиск по имени</option>
+                <option value="Поиск по фамилии">Поиск по учителю</option>
+                <option value="Поиск по имени пользователя">Поиск по предмет</option>
+            </select>
+        </div>
+        <div>
+            <form action="{{ url_for('group_search_name3') }}" method="post">
+                <div class="search_form" id="name_chirchiq">
+                    <input type="text" name="group_name" placeholder="Введите имя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('group_search_teacher3') }}" method="post">
+                <div class="search_form" id="surname_chirchiq">
+                    <input type="text" name="group_teacher" placeholder="Введите имя учителя">
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+            <form action="{{ url_for('group_search_subject3') }}" method="post">
+                <div class="search_form" id="username_chirchiq">
+                     <select name="group_subject">
+                        <option  value="Ingliz tili">Ingliz tili</option>
+                        <option  value="Rus tili">Rus tili</option>
+                        <option  value="Matematika">Matematika</option>
+                        <option  value="Tarix">Tarix</option>
+                        <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+                        <option  value="Kimyo">Kimyo</option>
+                        <option  value="Fizika">Fizika</option>
+                        <option  value="Biologiya">Biologiya</option>
+                        <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+                        <option value="Avto Maktab">Avto Maktab</option>
+                        <option value="Web Dasturchilik">Web Dasturchilik</option>
+                    </select>
+                    <input type="submit" value="Поиск">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="list_of_students" id="list_of_xojakent_students" {% if user.director or user.gazalkent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+         {% for group in groups_xoj %}
+            <a href="{{ url_for('inside_of_group',id=group.id) }}">
+                <div class="student_card {% if group.teacher_1 == 0 %} not_teacher {% endif %}">
+                    <p>{{ group.name }}</p>
+                    <p>{{ group.cost }} sum</p>
+                    <p>{{ group.type_of_course }}</p>
+                    <p>{{ group.subject }}</p>
+                    <p>{% if group.teacher_1 != 0 %}{{ group.teacher_name.lower() }}/{{ group.teacher_surname.lower() }}{% endif %}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="list_of_students" id="list_of_gazalkent_students" {% if user.director or user.xojakent_admin or user.chirchiq_admin %} style="display: none" {% endif %}>
+         {% for group in groups_gaz %}
+             <a href="{{ url_for('inside_of_group',id=group.id) }}">
+                <div class="student_card {% if group.teacher_1 == 0 %} not_teacher {% endif %}">
+                    <p>{{ group.name }}</p>
+                    <p>{{ group.cost }} sum</p>
+                    <p>{{ group.type_of_course }}</p>
+                    <p>{{ group.subject }}</p>
+                   <p>{% if group.teacher_1 != 0 %}{{ group.teacher_name.lower() }}/{{ group.teacher_surname.lower() }}{% endif %}</p>
+                </div>
+             </a>
+        {% endfor %}
+    </div>
+    <div class="list_of_students" id="list_of_chirchiq_students" {% if user.director or user.xojakent_admin or user.gazalkent_admin %} style="display: none" {% endif %}>
+         {% for group in groups_chir %}
+             <a href="{{ url_for('inside_of_group',id=group.id) }}">
+              <div class="student_card {% if group.teacher_1 == 0 %} not_teacher {% endif %}">
+                    <p>{{ group.name }}</p>
+                    <p>{{ group.cost }} sum</p>
+                    <p>{{ group.type_of_course }}</p>
+                    <p>{{ group.subject }}</p>
+                    <p>{% if group.teacher_1 != 0 %}{{ group.teacher_name.lower() }}/{{ group.teacher_surname.lower() }}{% endif %}</p>
+                </div>
+             </a>
+        {% endfor %}
+    </div>
+</div>
+<script src="/static/js/new/for%20studying_students.js"></script>
+</body>
+</html>

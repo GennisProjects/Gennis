@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/student_info.min.css">
+</head>
+<body>
+<div class="basic_student_profile">
+    <div class="for_icon">
+        <a href="{{ url_for('studying_students') }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="for_flash">
+                <h1>{{ message }} !</h1>
+                <button class="close_flash">&cross;</button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+    <div class="student">
+        <div class="for_student_photo">
+            {% if student.photo %}
+            <img src="{{ student.photo }}" alt="">
+            {% else %}
+            <img src="/static/img/user_image.png" alt="">
+            {% endif %}
+        </div>
+        <div class="info">
+            <div class="for_student_info">
+                <p>Имя: {{ student.name }}</p>
+                <p>Фамилия: {{ student.surname }}</p>
+                <p>Имя пользователя: {{ student.username.lower() }}</p>
+                <p>Баланс: {{ student.money }}</p>
+                {% if student.charity %}
+                <p>Благотворительност: {{ student.charity }}</p>
+                {% endif %}
+                <p>Телефон: {{ student.phone }}</p>
+                <p>Телефон родителей: {{ student.parent_phone }}</p>
+                <p>Возраст: {{ student.age }}</p>
+                <p>День рождения: {{ student.born_day }}</p>
+                <p>Месяц рождения: {{ student.born_month }}</p>
+                <p>Год рождения: {{ student.year_born }}</p>
+                {% if student.subject_1 %}
+                <p>Предмет-1: {{ student.subject_1 }}</p>
+                {% endif %}
+                {% if student.subject_2 %}
+                <p>Предмет-2: {{ student.subject_2 }}</p>
+                {% endif %}
+                {% if student.subject_3 %}
+                <p>Предмет-3: {{ student.subject_3 }}</p>
+                {% endif %}
+            </div>
+            <div class="student_buttons">
+                <div class="buttons">
+                    {% if user.director %}
+                    <button class="delete_student_button">Удалить студента</button>
+                    {% endif %}
+                    {% if not user.director %}
+                    <button class="payment_button">Оплата</button>
+                    {% endif %}
+                    <button class="contract_button">Договор</button>
+                    <button class="change_info_button">Изменить инфо</button>
+                    {% if user.director %}
+                    <button class="give_charity_button">Give Charity</button>
+                    {% endif %}
+                </div>
+                <div class="setting_select">
+                    <select class="select" name="" id="">
+                        <option value="Выберите тип изменения">Выберите тип изменения</option>
+                        <option value="Изменить инфо">Изменить инфо</option>
+                        <option value="Изменить пароль">Изменить пароль</option>
+                    </select>
+                </div>
+                <form action="{{ url_for('change_student_info',student_id=student.id) }}" method="post">
+                    <div class="student_change" id="info_form">
+                        <input required type="text" name="name" value="{{ student.name }}">
+                        <input required type="text" name="surname" value="{{ student.surname }}">
+                        <input required type="number" name="phone" value="{{ student.phone }}">
+                        <input required type="number" name="parent_phone" value="{{ student.parent_phone }}">
+{% if not student.group1 %}
+                        <div class="subjects">
+                            <select  name="subject_1">
+                                {% if student.subject_1 %}
+                                <option value="{{ student.subject_1 }}">{{ student.subject_1 }}</option>
+                                {% endif %}
+                                <option  value="Birinchi Fan">Birinchi Fan</option>
+                                {% if student.subject_1 != "Ingliz tili" and student.subject_2 != "Ingliz tili" and student.subject_3 != "Ingliz tili" %}
+                                <option  value="Ingliz tili">Ingliz tili</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Rus tili" and student.subject_2 != "Rus tili" and student.subject_3 != "Rus tili"%}
+                                <option  value="Rus tili">Rus tili</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Matematika" and student.subject_2 != "Matematika" and student.subject_3 != "Matematika" %}
+                                <option  value="Matematika">Matematika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Tarix" and student.subject_2 != "Tarix" and student.subject_3 != "Tarix" %}
+                                <option  value="Tarix">Tarix</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Ona tili va Adabiyot" and student.subject_2 != "Ona tili va Adabiyot" and student.subject_3 != "Ona tili va Adabiyot" %}
+                                <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Kimyo" and student.subject_2 != "Kimyo" and student.subject_3 != "Kimyo" %}
+                                <option  value="Kimyo">Kimyo</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Fizika" and student.subject_2 != "Fizika" and student.subject_3 != "Fizika" %}
+                                <option  value="Fizika">Fizika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Biologiya" and student.subject_2 != "Biologiya" and student.subject_3 != "Biologiya" %}
+                                <option  value="Biologiya">Biologiya</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Uy xamshiraligi" and student.subject_2 != "Uy xamshiraligi" and student.subject_3 != "Uy xamshiraligi" %}
+                                <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Avto Maktab" and student.subject_2 != "Avto Maktab" and student.subject_3 != "Avto Maktab"%}
+                                <option value="Avto Maktab">Avto Maktab</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Web Dasturchilik" and student.subject_2 != "Web Dasturchilik" and student.subject_3 != "Web Dasturchilik" %}
+                                <option value="Web Dasturchilik">Web Dasturchilik</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Ingliz tili+mental arifmetika" and student.subject_2 != "Ingliz tili+mental arifmetika" and student.subject_3 != "Ingliz tili+mental arifmetika" %}
+                                <option value="Ingliz tili+mental arifmetika">Ingliz tili+mental arifmetika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Rus tili+mental arifmetika" and student.subject_2 != "Rus tili+mental arifmetika" and student.subject_3 != "Rus tili+mental arifmetika" %}
+                                <option value="Rus tili+mental arifmetika">Rus tili+mental arifmetika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Mental arifmetika" and student.subject_2 != "Mental arifmetika" and student.subject_3 != "Mental arifmetika" %}
+                                <option value="Mental arifmetika">Mental arifmetika</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        {% endif %}
+                        {% if not student.group2 %}
+                        <div class="subjects">
+                            <select  name="subject_2">
+                                {% if student.subject_2 %}
+                                <option value="{{ student.subject_2 }}">{{ student.subject_2 }}</option>
+                                {% endif %}
+                                <option  value="Ikkinchi Fan">Ikkinchi Fan</option>
+                                {% if student.subject_1 != "Ingliz tili" and student.subject_2 != "Ingliz tili" and student.subject_3 != "Ingliz tili" %}
+                                <option  value="Ingliz tili">Ingliz tili</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Rus tili" and student.subject_2 != "Rus tili" and student.subject_3 != "Rus tili"%}
+                                <option  value="Rus tili">Rus tili</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Matematika" and student.subject_2 != "Matematika" and student.subject_3 != "Matematika" %}
+                                <option  value="Matematika">Matematika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Tarix" and student.subject_2 != "Tarix" and student.subject_3 != "Tarix" %}
+                                <option  value="Tarix">Tarix</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Ona tili va Adabiyot" and student.subject_2 != "Ona tili va Adabiyot" and student.subject_3 != "Ona tili va Adabiyot" %}
+                                <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Kimyo" and student.subject_2 != "Kimyo" and student.subject_3 != "Kimyo" %}
+                                <option  value="Kimyo">Kimyo</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Fizika" and student.subject_2 != "Fizika" and student.subject_3 != "Fizika" %}
+                                <option  value="Fizika">Fizika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Biologiya" and student.subject_2 != "Biologiya" and student.subject_3 != "Biologiya" %}
+                                <option  value="Biologiya">Biologiya</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Uy xamshiraligi" and student.subject_2 != "Uy xamshiraligi" and student.subject_3 != "Uy xamshiraligi" %}
+                                <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Avto Maktab" and student.subject_2 != "Avto Maktab" and student.subject_3 != "Avto Maktab"%}
+                                <option value="Avto Maktab">Avto Maktab</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Web Dasturchilik" and student.subject_2 != "Web Dasturchilik" and student.subject_3 != "Web Dasturchilik" %}
+                                <option value="Web Dasturchilik">Web Dasturchilik</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Ingliz tili+mental arifmetika" and student.subject_2 != "Ingliz tili+mental arifmetika" and student.subject_3 != "Ingliz tili+mental arifmetika" %}
+                                <option value="Ingliz tili+mental arifmetika">Ingliz tili+mental arifmetika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Rus tili+mental arifmetika" and student.subject_2 != "Rus tili+mental arifmetika" and student.subject_3 != "Rus tili+mental arifmetika" %}
+                                <option value="Rus tili+mental arifmetika">Rus tili+mental arifmetika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Mental arifmetika" and student.subject_2 != "Mental arifmetika" and student.subject_3 != "Mental arifmetika" %}
+                                <option value="Mental arifmetika">Mental arifmetika</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        {% endif %}
+                        {% if not student.group3 %}
+                        <div class="subjects">
+                            <select  name="subject_3">
+                                {% if student.subject_3 %}
+                                <option value="{{ student.subject_3 }}">{{ student.subject_3 }}</option>
+                                {% endif %}
+                                <option  value="Uchinchi Fan">Uchinchi Fan</option>
+                                {% if student.subject_1 != "Ingliz tili" and student.subject_2 != "Ingliz tili" and student.subject_3 != "Ingliz tili" %}
+                                <option  value="Ingliz tili">Ingliz tili</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Rus tili" and student.subject_2 != "Rus tili" and student.subject_3 != "Rus tili"%}
+                                <option  value="Rus tili">Rus tili</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Matematika" and student.subject_2 != "Matematika" and student.subject_3 != "Matematika" %}
+                                <option  value="Matematika">Matematika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Tarix" and student.subject_2 != "Tarix" and student.subject_3 != "Tarix" %}
+                                <option  value="Tarix">Tarix</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Ona tili va Adabiyot" and student.subject_2 != "Ona tili va Adabiyot" and student.subject_3 != "Ona tili va Adabiyot" %}
+                                <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Kimyo" and student.subject_2 != "Kimyo" and student.subject_3 != "Kimyo" %}
+                                <option  value="Kimyo">Kimyo</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Fizika" and student.subject_2 != "Fizika" and student.subject_3 != "Fizika" %}
+                                <option  value="Fizika">Fizika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Biologiya" and student.subject_2 != "Biologiya" and student.subject_3 != "Biologiya" %}
+                                <option  value="Biologiya">Biologiya</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Uy xamshiraligi" and student.subject_2 != "Uy xamshiraligi" and student.subject_3 != "Uy xamshiraligi" %}
+                                <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Avto Maktab" and student.subject_2 != "Avto Maktab" and student.subject_3 != "Avto Maktab"%}
+                                <option value="Avto Maktab">Avto Maktab</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Web Dasturchilik" and student.subject_2 != "Web Dasturchilik" and student.subject_3 != "Web Dasturchilik" %}
+                                <option value="Web Dasturchilik">Web Dasturchilik</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Ingliz tili+mental arifmetika" and student.subject_2 != "Ingliz tili+mental arifmetika" and student.subject_3 != "Ingliz tili+mental arifmetika" %}
+                                <option value="Ingliz tili+mental arifmetika">Ingliz tili+mental arifmetika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Rus tili+mental arifmetika" and student.subject_2 != "Rus tili+mental arifmetika" and student.subject_3 != "Rus tili+mental arifmetika" %}
+                                <option value="Rus tili+mental arifmetika">Rus tili+mental arifmetika</option>
+                                {% endif %}
+                                {% if student.subject_1 != "Mental arifmetika" and student.subject_2 != "Mental arifmetika" and student.subject_3 != "Mental arifmetika" %}
+                                <option value="Mental arifmetika">Mental arifmetika</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        {% endif %}
+                        <input  type="submit" value="Изменять">
+                    </div>
+                </form>
+                <form action="{{ url_for('change_password_student',student_id=student.id) }}" method="post">
+                    <div class="student_change" id="password_form">
+                        <input required type="password" id="password" placeholder="Введите пароль">
+                        <input required type="password" name="password" id="password2" placeholder="Повторите пароль">
+                        <input type="submit" value="Изменять">
+                    </div>
+                </form>
+                <div class="contract">
+                    <a href="{{ url_for('shartnoma',student_id=student.id) }}"><button>Показать контракт</button></a>
+                    <form action="{{ url_for('shartnoma_fill1',student_id=student.id) }}" method="post">
+                        <div class="for_submit">
+                            <div class="ot_do">
+                                <input type="date" name="ot" value="{{ shartnoma.ot }}">
+                                <input type="date" name="do" value="{{ shartnoma.do }}" >
+                            </div>
+                            <input type="submit" value="Продлить">
+                        </div>
+                    </form>
+                    <form action="{{ url_for('upload_contract',student_id=student.id) }}" method="post" enctype="multipart/form-data">
+                        <div class="upload_form">
+                            <h3>Загрузить фото контракта</h3>
+                            {{ form.csrf_token }}
+                            {{ form.image(class = "form-control-file")  }}
+                            <input type="submit" value="Загрузить">
+                        </div>
+                    </form>
+                </div>
+                <form action="{{ url_for('deleted_students',id=student.id) }}" method="post">
+                    <div class="delete_form">
+                        <input required type="text" name="reason" placeholder="Зачем удалять этого ученика?">
+                        <input type="submit" value="Удалить">
+                    </div>
+                </form>
+                <form action="{{ url_for('calculate',id=student.id) }}" method="post">
+                    <div class="student_change" id="payment">
+                        <input type="number" name="pay" placeholder="Сумма">
+                        <input type="submit" value="Оплачено">
+                    </div>
+                </form>
+                <form action="{{ url_for('give_charity',id=student.id) }}" method="post">
+                    <div class="student_change" id="charity">
+                        <input type="number" name="charity" placeholder="charity">
+                        <input type="submit" value="Give Charity">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="student_group">
+            {% if group_name1 %}
+            <a href="{{ url_for('inside_of_group',id=group_name1.id) }}">
+            <div class="group">
+                <p>Группа: {{ group_name1.name.lower() }}</p>
+                {% for teach in teacher %}
+                <p>Учитель: {{ teach.name.lower() }}</p>
+                {% endfor %}
+                <p>Участников: {{ result1 }}</p>
+                <p>Цена: {{ group_name1.cost }}</p>
+                <p>Предмет: {{ group_name1.subject }}</p>
+                <p>Тип: {{ group_name1.type_of_course }}</p>
+            </div>
+            </a>
+            {% endif %}
+            {% if group_name2 %}
+            <a href="{{ url_for('inside_of_group',id=group_name2.id) }}">
+            <div class="group">
+                <p>Группа: {{ group_name2.name.lower() }}</p>
+                {% for name in teacher_2 %}
+                <p>Учитель: {{ name.name.lower() }}</p>
+                {% endfor %}
+                <p>Участников: {{ result2 }}</p>
+                <p>Цена: {{ group_name2.cost }}</p>
+                <p>Предмет: {{ group_name2.subject }}</p>
+                <p>Тип: {{ group_name2.type_of_course }}</p>
+            </div>
+            </a>
+            {% endif %}
+            {% if group_name3 %}
+            <a href="{{ url_for('inside_of_group',id=group_name3.id) }}">
+            <div class="group">
+                <p>Группа: {{ group_name3.name.lower() }}</p>
+                {% for name in teacher_3 %}
+                <p>Учитель: {{ name.name.lower() }}</p>
+                {% endfor %}
+                <p>Участников: {{ result3 }}</p>
+                <p>Цена: {{ group_name3.cost }}</p>
+                <p>Предмет: {{ group_name3.subject }}</p>
+                <p>Тип: {{ group_name3.type_of_course }}</p>
+            </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script src="/static/js/new/student_profile.js"></script>
+<script src="/static/js/new/flash.js"></script>
+</body>
+</html>

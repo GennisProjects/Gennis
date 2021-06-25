@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Groups</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/inside_group.min.css">
+</head>
+<body>
+<div class="other_groups">
+    <h1>Доступные группы</h1>
+    <div class="other_groups_table">
+    <table>
+        <tr>
+            <th>Имя</th>
+            <th>Цена</th>
+            <th>Тип</th>
+            <th>Учитель</th>
+            <th>Предмет</th>
+            <th>Добавить</th>
+        </tr>
+         {% for gr in groups %}
+             {% if gr.id != old_id %}
+            <tr>
+                <td>{{ gr.name.lower() }}</td>
+                <td>{{ gr.cost }}</td>
+                <td>{{ gr.type_of_course }}</td>
+                <td>{{ gr.teacher_name.lower() }}/{{ gr.teacher_surname.lower() }}</td>
+                <td>{{ gr.subject }}</td>
+                <td><a href="{{ url_for('move_to_group',old_id=old_id,group_id=gr.id) }}"><button>&checkmark;</button></a></td>
+            </tr>
+             {% endif %}
+         {% endfor %}
+    </table>
+    </div>
+</div>
+</body>
+</html>

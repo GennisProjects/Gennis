@@ -1,0 +1,100 @@
+{% from 'new/show links.html' import show_links %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/reason_list.min.css">
+    <title>Gennis Campus</title>
+</head>
+{{ show_links(user,teacher,form) }}
+<body>
+<div class="reason_basic">
+    <div class="button_subjects">
+        <button id="xojakent_reason">Ходжикент</button>
+        <button id="gazalkent_reason">Газалкент</button>
+        <button id="chirchiq_reason">Чирчик</button>
+    </div>
+{#{% with messages = get_flashed_messages() %}#}
+{#    {% if messages %}#}
+{#        {% for message in messages %}#}
+{#    <div class="for_flash">#}
+{#        <h1>{{ message }} !</h1>#}
+{#        <button class="close_flash">&cross;</button>#}
+{#    </div>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+{#{% endwith %}#}
+    <div class="tables">
+        <div class="table" id="xojakent">
+            <table>
+                <tr>
+                   <th>Имя</th>
+                    <th>Имя пользователя</th>
+                    <th>Фамилия</th>
+                    <th>Телефон номер</th>
+                    <th>Баланс</th>
+                </tr>
+                {% for student in query_students %}
+                    {% if student.locations == 1 %}
+                <tr>
+                    <td><a href="{{ url_for('show_due_days',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.phone }}</td>
+                    <td>{{ student.money }}</td>
+                </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="table" id="gazalkent">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                     <th>Имя пользователя</th>
+                    <th>Фамилия</th>
+                    <th>Телефон номер</th>
+                    <th>Баланс</th>
+                </tr>
+                {% for student in query_students %}
+                    {% if student.locations == 2 %}
+                <tr>
+                    <td><a href="{{ url_for('show_due_days',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.phone }}</td>
+                    <td>{{ student.money }}</td>
+                </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="table" id="chirchiq">
+            <table>
+                <tr>
+                   <th>Имя</th>
+                    <th>Имя пользователя</th>
+                    <th>Фамилия</th>
+                    <th>Телефон номер</th>
+                    <th>Баланс</th>
+                </tr>
+                {% for student in query_students %}
+                    {% if student.locations == 3 %}
+                <tr>
+                    <td><a href="{{ url_for('show_due_days',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.phone }}</td>
+                    <td>{{ student.money }}</td>
+                </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/static/js/new/reason_of_students.js"></script>
+<script src="/static/js/new/flash.js"></script>
+</body>
+</html>

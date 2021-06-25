@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/student_info.min.css">
+</head>
+<body>
+<div class="basic_student_profile">
+    <div class="for_icon">
+        <a href="{{ url_for('teacher') }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="for_flash">
+                <h1>{{ message }} !</h1>
+                <button class="close_flash">&cross;</button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+    <div class="student">
+        <div class="for_student_photo">
+            {% if teacher.photo %}
+            <img src="{{ teacher.photo }}" alt="">
+            {% else %}
+            <img src="/static/img/user_image.png" alt="">
+            {% endif %}
+        </div>
+        <div class="info">
+            <div class="for_student_info">
+                <p>Имя: {{ teacher.name }}</p>
+                <p>Фамилия: {{ teacher.surname }}</p>
+                <p>Имя пользователя: {{ teacher.username.lower() }}</p>
+                {% if user.xojakent_admin or user.director %}
+                <p>Зарплата: {{ teacher.salary }}</p>
+                {% endif %}
+                {% if user.gazalkent_admin or user.director %}
+                <p>Зарплата: {{ teacher.salary_for_gazalkent }}</p>
+                {% endif %}
+                {% if user.chirchiq_admin or user.director %}
+                <p>Зарплата: {{ teacher.salary_for_chirchiq }}</p>
+                {% endif %}
+                <p>Телефон: {{ teacher.phone }}</p>
+                <p>Возраст: {{ teacher.age }}</p>
+                <p>День рождения: {{ teacher.day_born }}</p>
+                <p>Месяц рождения: {{ teacher.month_born }}</p>
+                <p>Год рождения: {{ teacher.year_born }}</p>
+                <p>Предмет: {{ teacher.subject }}</p>
+            </div>
+            <div class="student_buttons">
+                <div class="buttons">
+                    {% if user.director and teacher.group1 == "" %}
+                    <button class="delete_student_button">Удалить учителя</button>
+                    {% endif %}
+                    {% if not user.director %}
+                    <button class="payment_button">Зарплата</button>
+                    {% endif %}
+                    <button class="change_info_button">Изменить инфо</button>
+                </div>
+                <div class="setting_select">
+                    <select class="select" name="" id="">
+                        <option value="Изменить инфо">Изменить инфо</option>
+                        <option value="Изменить пароль">Изменить пароль</option>
+                    </select>
+                </div>
+                <form action="{{ url_for('change_info_teacher',teacher_id=teacher.id) }}" method="post">
+                    <div class="student_change" id="info_form">
+                        <input required type="text" name="name" value="{{ teacher.name }}">
+                        <input required type="text" name="surname" value="{{ teacher.surname }}">
+                        <input required type="number" name="phone" value="{{ teacher.phone }}">
+                        <input  type="submit" value="Изменять">
+                    </div>
+                </form>
+                <form action="{{ url_for('change_password_teacher',teacher_id=teacher.id) }}" method="post">
+                    <div class="student_change" id="password_form">
+                        <input required type="password" id="password" placeholder="Введите пароль">
+                        <input required type="password" name="password" id="password2" placeholder="Повторите пароль">
+                        <input type="submit" value="Изменять">
+                    </div>
+                </form>
+                <form action="{{ url_for('delete_teacher',teacher_id=teacher.id) }}" method="post">
+                    <div class="delete_form">
+                        <input type="submit" value="Удалить">
+                    </div>
+                </form>
+                <form action="{{ url_for('salary_give',id=teacher.id) }}" method="post">
+                    <div class="student_change" id="payment">
+                        <input type="number" name="teacher_salary" placeholder="Сумма">
+                        <input type="submit" value="Дать зарплату">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="student_group">
+        {% if user.director %}
+             {% if group1  %}
+                <a href="{{ url_for('inside_of_group',id=group1.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group1.name.lower() }}</p>
+                    <p>Цена: {{ group1.cost }}</p>
+                    <p>Тип: {{ group1.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+                    {% if group2 %}
+                <a href="{{ url_for('inside_of_group',id=group2.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group2.name.lower() }}</p>
+                    <p>Цена: {{ group2.cost }}</p>
+                    <p>Тип: {{ group2.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+                    {% if group3 %}
+                <a href="{{ url_for('inside_of_group',id=group3.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group3.name.lower() }}</p>
+                    <p>Цена: {{ group3.cost }}</p>
+                    <p>Тип: {{ group3.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+                    {% if group4 %}
+                <a href="{{ url_for('inside_of_group',id=group4.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group4.name.lower() }}</p>
+                    <p>Цена: {{ group4.cost }}</p>
+                    <p>Тип: {{ group4.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+                    {% if group5 %}
+                <a href="{{ url_for('inside_of_group',id=group5.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group5.name.lower() }}</p>
+                    <p>Цена: {{ group5.cost }}</p>
+                    <p>Тип: {{ group5.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+                         {% if group6 %}
+                <a href="{{ url_for('inside_of_group',id=group6.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group6.name.lower() }}</p>
+                    <p>Цена: {{ group6.cost }}</p>
+                    <p>Тип: {{ group6.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+                    {% if group7 %}
+                <a href="{{ url_for('inside_of_group',id=group7.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group7.name.lower() }}</p>
+                    <p>Цена: {{ group7.cost }}</p>
+                    <p>Тип: {{ group7.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+                    {% if group8 %}
+                <a href="{{ url_for('inside_of_group',id=group8.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group8.name.lower() }}</p>
+                    <p>Цена: {{ group8.cost }}</p>
+                    <p>Тип: {{ group8.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+                    {% if group9 %}
+                <a href="{{ url_for('inside_of_group',id=group9.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group9.name.lower() }}</p>
+                    <p>Цена: {{ group9.cost }}</p>
+                    <p>Тип: {{ group9.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+                    {% if group10 %}
+                <a href="{{ url_for('inside_of_group',id=group10.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group10.name.lower() }}</p>
+                    <p>Цена: {{ group10.cost }}</p>
+                    <p>Тип: {{ group10.type_of_course }}</p>
+                </div>
+                </a>
+                    {% endif %}
+        {% else %}
+             {% if group1 and user.locations == group1.location %}
+                <a href="{{ url_for('inside_of_group',id=group1.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group1.name.lower() }}</p>
+                    <p>Цена: {{ group1.cost }}</p>
+                    <p>Тип: {{ group1.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group2 and user.locations == group2.location %}
+                <a href="{{ url_for('inside_of_group',id=group2.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group2.name.lower() }}</p>
+                    <p>Цена: {{ group2.cost }}</p>
+                    <p>Тип: {{ group2.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group3 and user.locations == group3.location %}
+                <a href="{{ url_for('inside_of_group',id=group3.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group3.name.lower() }}</p>
+                    <p>Цена: {{ group3.cost }}</p>
+                    <p>Тип: {{ group3.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group4 and user.locations == group4.location %}
+                <a href="{{ url_for('inside_of_group',id=group4.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group4.name.lower() }}</p>
+                    <p>Цена: {{ group4.cost }}</p>
+                    <p>Тип: {{ group4.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group5 and user.locations == group5.location %}
+                <a href="{{ url_for('inside_of_group',id=group5.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group5.name.lower() }}</p>
+                    <p>Цена: {{ group5.cost }}</p>
+                    <p>Тип: {{ group5.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group6 and user.locations == group6.location %}
+                <a href="{{ url_for('inside_of_group',id=group6.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group6.name.lower() }}</p>
+                    <p>Цена: {{ group6.cost }}</p>
+                    <p>Тип: {{ group6.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group7 and user.locations == group7.location %}
+                <a href="{{ url_for('inside_of_group',id=group7.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group7.name.lower() }}</p>
+                    <p>Цена: {{ group7.cost }}</p>
+                    <p>Тип: {{ group7.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group8 and user.locations == group8.location %}
+                <a href="{{ url_for('inside_of_group',id=group8.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group8.name.lower() }}</p>
+                    <p>Цена: {{ group8.cost }}</p>
+                    <p>Тип: {{ group8.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group9 and user.locations == group9.location %}
+                <a href="{{ url_for('inside_of_group',id=group9.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group9.name.lower() }}</p>
+                    <p>Цена: {{ group9.cost }}</p>
+                    <p>Тип: {{ group9.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+            {% if group10 and user.locations == group10.location %}
+                <a href="{{ url_for('inside_of_group',id=group10.id) }}">
+                <div class="group">
+                    <p>Группа-1: {{ group10.name.lower() }}</p>
+                    <p>Цена: {{ group10.cost }}</p>
+                    <p>Тип: {{ group10.type_of_course }}</p>
+                </div>
+                </a>
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+<script src="/static/js/new/student_profile.js"></script>
+<script src="/static/js/new/flash.js"></script>
+</body>
+</html>

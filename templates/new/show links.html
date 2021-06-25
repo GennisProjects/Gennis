@@ -1,0 +1,203 @@
+{% macro show_links(user,teacher,form,subject_1,subject_2,subject_3) %}
+    <link rel="stylesheet" href="/static/css/new/nav.min.css">
+    <header>
+        <div class="head">
+            <div class="for_img">
+                <img src="/static/img/png.png" alt="">
+            </div>
+            <div class="info_user">
+                {% if user %}
+                    <p class="name_surname">{{ user.name }} {{ user.surname }}{% if user.group1 %} {{ user.money }}sum{% endif %}</p>
+                    {% if user.photo %}
+                        <img src="{{ user.photo }}" alt="">
+                        {% else %}
+                        <img src="/static/img/991px-Font_Awesome_5_solid_user-circle.svg.png" alt="">
+                    {% endif %}
+                {% endif %}
+                {% if teacher %}
+                 <p class="name_surname">{{ teacher.name }} {{ teacher.surname }}  <a href="{{ url_for('see_salary',salary="xojakent") }}">{{ teacher.salary }}sum</a> <a href="{{ url_for('see_salary',salary="gazalkent") }}">{{ teacher.salary_for_gazalkent }}sum</a> <a href="{{ url_for('see_salary',salary="chirchiq") }}">{{ teacher.salary_for_chirchiq }}sum</a></p>
+                    {% if teacher.photo %}
+                        <img src="{{ teacher.photo }}" alt="">
+                        {% else %}
+                        <img src="/static/img/991px-Font_Awesome_5_solid_user-circle.svg.png" alt="">
+                    {% endif %}
+                {% endif %}
+                <div data-modal class="button_down">
+                    <img src="/static/img/icons/sort-down-solid.svg" alt="">
+                </div>
+                <div class="user_location">
+                    <ul>
+                        <li class="profile_modal"><img src="/static/img/icons/address-card-regular.svg" alt="">Профиль</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</header>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+    <div class="for_flash">
+        <h1>{{ message }} !</h1>
+        <button class="close_flash">&cross;</button>
+    </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    <div class="main_profile">
+        <div class="user_profile">
+            <div class="close_button">
+                <button>&cross;</button>
+            </div>
+            <div class="edit_form">
+                <button class="edit_button">Редактировать профиль</button>
+                <button class="cancel_edit">Отмена</button>
+                <div class="go_to_change">
+                    <form action="{{ url_for('change_infos_user') }}" method="post">
+                        <input type="password" name="password" placeholder="Введите свой пароль">
+                        <input type="submit" value="Перейти к изменению">
+                    </form>
+                </div>
+            </div>
+            <div class="for_img2">
+            {% if user %}
+                {% if user.photo %}
+                    <img src="{{ user.photo }}" alt="">
+                {% else %}
+                    <img src="/static/img/user_image.png" alt="">
+                {% endif %}
+            {% endif %}
+            {% if teacher %}
+                {% if teacher.photo %}
+                    <img src="{{ teacher.photo }}" alt="">
+                {% else %}
+                   <img src="/static/img/user_image.png" alt="">
+                {% endif %}
+            {% endif %}
+                {% if user %}
+                    <form action="{{ url_for('photo_add') }}" method="post" enctype="multipart/form-data">
+                        <div class="camera">
+                            <label for="upload" class="image_upload">
+                                {{ form.image(class = "upload_img",id="upload")}}
+                            </label>
+                        </div>
+                        <div class="ready_photo">
+                            <input type="submit" value="&check;">
+                        </div>
+                    </form>
+                {% endif %}
+                {% if teacher %}
+                    <form action="{{ url_for('photo_teacher') }}" method="post" enctype="multipart/form-data">
+                        <div class="camera">
+                            <label for="upload" class="image_upload">
+                                {{ form.image(class = "upload_img",id="upload")}}
+                            </label>
+                        </div>
+                        <div class="ready_photo">
+                            <input type="submit" value="&check;">
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="user_info">
+            {% if user %}
+                <h2>{{ user.name }} {{ user.surname }}/{{ user.age }}</h2>
+                {% if user.subject_1 %}
+                    <h3>Учебные предметы:</h3>
+                    <p>{{ user.subject_1 }}{% if user.subject_2 %}/{{ user.subject_2 }}{% endif %}{% if user.subject_3 %}/{{ user.subject_3 }}{% endif %}</p>
+                {% endif %}
+                <h3>Номер телефона:</h3>
+                <p>{{ user.phone }}</p>
+                {% if not user.director and not user.xojakent_admin and not user.gazalkent_admin and not user.chirchiq_admin %}
+                <h3>Номер телефона родителей:</h3>
+                <p>{{ user.parent_phone }}</p>
+                {% if subject_1 %}
+                    <h3>Группы:</h3>
+                    <p>{{ subject_1.name }}{% if subject_2 %}/{{ subject_2.name }}{% endif %}{% if subject_3 %}/{{ subject_3.name }}{% endif %}</p>
+                {% endif %}
+                {% endif %}
+            {% endif %}
+            {% if teacher %}
+                <h2>{{ teacher.name }} {{ teacher.surname }}/{{ teacher.age }}</h2>
+                <h3>Номер телефона:</h3>
+                <p>{{ teacher.phone }}</p>
+                <h3>Предмет:</h3>
+                <p>{{ teacher.subject }}</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+<nav>
+    <div class="container">
+        <div class="head">
+            <div class="info_user">
+                {% if user %}
+                    <p class="name_surname">{{ user.name }} {{ user.surname }}{% if user.group1 %} {{ user.money }}sum{% endif %}</p>
+
+                    <div class="info_user_img">
+                        {% if user.photo %}
+                            <img class="user_img" src="{{ user.photo }}" alt="">
+                            {% else %}
+                            <img class="user_img" src="/static/img/991px-Font_Awesome_5_solid_user-circle.svg.png" alt="">
+                        {% endif %}
+                        <div data-modal class="button_down"><a href="{{ url_for('info') }}">
+                            <img src="/static/img/icons/sort-down-solid.svg" alt=""></a>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if teacher %}
+                 <p class="name_surname">{{ teacher.name }} {{ teacher.surname }}  <a href="{{ url_for('see_salary',salary="xojakent") }}">Ходжикент {{ teacher.salary }} sum</a> <a href="{{ url_for('see_salary',salary="gazalkent") }}">Газалкент {{ teacher.salary_for_gazalkent }} sum</a> <a href="{{ url_for('see_salary',salary="chirchiq") }}">Чирчик {{ teacher.salary_for_chirchiq }} sum</a></p>
+                    {% if teacher.photo %}
+                        <img src="{{ teacher.photo }}" alt="">
+                        {% else %}
+                        <img src="/static/img/991px-Font_Awesome_5_solid_user-circle.svg.png" alt="">
+                    {% endif %}
+                    <div data-modal class="button_down"><a href="{{ url_for('info') }}">
+                            <img src="/static/img/icons/sort-down-solid.svg" alt=""></a>
+                    </div>
+                {% endif %}
+                <div class="user_location">
+                    <ul>
+                        <li class="profile_modal"><img src="/static/img/icons/address-card-regular.svg" alt="">Профиль</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="menu">
+            {% if user.director or user.xojakent_admin or user.gazalkent_admin or user.chirchiq_admin %}
+            <li><a class="menu_item" href="/register"><img src="/static/img/icons/edit-regular.svg" alt="">Регистрация</a></li>
+            <li><a class="menu_item" href="/register_teacher"><img src="/static/img/icons/pen-square-solid.svg" alt="">Регистрация Учителя</a></li>
+            <li><a class="menu_item" href="/all_students"><img src="/static/img/icons/user-solid.svg" alt="">Новые студенты</a></li>
+            <li><a class="menu_item" href="/studying_students"><img src="/static/img/icons/user-graduate-solid%20(1).svg" alt="">Студенты</a></li>
+            <li><a class="menu_item" href="/groups"><img src="/static/img/icons/user-friends-solid.svg" alt="">Группы</a></li>
+            <li><a class="menu_item" href="/teachers"><img src="/static/img/icons/user-tie-solid.svg" alt="">Учителя</a></li>
+            {% endif %}
+            {% if user.director %}
+            <li><a class="menu_item" href="/sababli_qilish"><img src="/static/img/icons/user-slash-solid.svg" alt="">Отсутствует по причине</a></li>
+            <li><a class="menu_item" href="/all_user"><img src="/static/img/icons/users-solid.svg" alt="">Все Админы</a></li>
+            {% endif %}
+            {% if user.director or user.xojakent_admin or user.gazalkent_admin or user.chirchiq_admin %}
+            <li><a class="menu_item" href='/payment'><img src="/static/img/icons/wallet-solid.svg" alt="">Бухгалтерский учет</a></li>
+            {% endif %}
+            {% if teacher %}
+            <li><a class="menu_item" href="{{ url_for('my_group1') }}"><img src="/static/img/icons/users-solid.svg" alt="">Мои группы</a></li>
+            {% endif %}
+            {% if user and not user.xojakent_admin and not user.chirchiq_admin and not user.gazalkent_admin and not user.director%}
+            <li><a class="menu_item" href="{{ url_for('find_group') }}"><img src="/static/img/icons/users-solid.svg" alt="">Мои группы</a></li>
+            {% endif %}
+            {% if user.username == "RIMEFARA" and user.director %}
+            <li><a class="menu_item" href="{{ url_for('users') }}">Delete users</a></li>
+            {% endif %}
+            <li><a class="menu_item" href="{{ url_for('log_out') }}"><img src="/static/img/icons/sign-out-alt-solid.svg" alt="">Выход</a></li>
+        </ul>
+    </div>
+
+</nav>
+<div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<script src="/static/js/new/for_nav.js"></script>
+{#<script src="/static/js/new/timeChangeBackground.js"></script>#}
+{% endmacro %}

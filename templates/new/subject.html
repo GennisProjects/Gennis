@@ -1,0 +1,1389 @@
+{% from 'new/show links.html' import show_links %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/new/subjects.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+{{ show_links(user,teacher,form) }}
+<div class="basic_subject">
+    <div class="button_subjects">
+    {% if user.director %}
+        <button id="xojakent_students">Ходжикент</button>
+        <button id="gazalkent_students">Газалкент</button>
+        <button id="chirchiq_students">Чирчик</button>
+    {% endif %}
+    </div>
+    <div class="select_subjects">
+        <select id="xojakent_subjects" {% if not user.director and not user.gazalkent_admin and not user.chirchiq_admin %} style="display: inline" {% endif %}>
+            <option value="Все студенты">Все студенты</option>
+            <option  value="Ingliz tili">Ingliz tili</option>
+            <option  value="Rus tili">Rus tili</option>
+            <option  value="Matematika">Matematika</option>
+            <option  value="Tarix">Tarix</option>
+            <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+            <option  value="Kimyo">Kimyo</option>
+            <option  value="Fizika">Fizika</option>
+            <option  value="Biologiya">Biologiya</option>
+            <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+            <option value="Avto Maktab">Avto Maktab</option>
+            <option value="Web Dasturchilik">Web Dasturchilik</option>
+            <option value="Ingliz tili+mental arifmetika">Ingliz tili+mental arifmetika</option>
+            <option value="Rus tili+mental arifmetika">Rus tili+mental arifmetika</option>
+            <option value="Mental arifmetika">Mental arifmetika</option>
+        </select>
+        <select id="gazalkent_subjects" {% if not user.director and not user.xojakent_admin and not user.chirchiq_admin %} style="display: inline" {% endif %}>
+            <option value="Все студенты">Все студенты</option>
+            <option  value="Ingliz tili">Ingliz tili</option>
+            <option  value="Rus tili">Rus tili</option>
+            <option  value="Matematika">Matematika</option>
+            <option  value="Tarix">Tarix</option>
+            <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+            <option  value="Kimyo">Kimyo</option>
+            <option  value="Fizika">Fizika</option>
+            <option  value="Biologiya">Biologiya</option>
+            <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+            <option value="Avto Maktab">Avto Maktab</option>
+            <option value="Web Dasturchilik">Web Dasturchilik</option>
+            <option value="Ingliz tili+mental arifmetika">Ingliz tili+mental arifmetika</option>
+            <option value="Rus tili+mental arifmetika">Rus tili+mental arifmetika</option>
+            <option value="Mental arifmetika">Mental arifmetika</option>
+        </select>
+        <select id="chirchiq_subjects" {% if not user.director and not user.xojakent_admin and not user.gazalkent_admin %} style="display: inline" {% endif %}>
+            <option value="Все студенты">Все студенты</option>
+            <option  value="Ingliz tili">Ingliz tili</option>
+            <option  value="Rus tili">Rus tili</option>
+            <option  value="Matematika">Matematika</option>
+            <option  value="Tarix">Tarix</option>
+            <option  value="Ona tili va Adabiyot">Ona tili va Adabiyot</option>
+            <option  value="Kimyo">Kimyo</option>
+            <option  value="Fizika">Fizika</option>
+            <option  value="Biologiya">Biologiya</option>
+            <option  value="Uy xamshiraligi">Uy xamshiraligi</option>
+            <option value="Avto Maktab">Avto Maktab</option>
+            <option value="Web Dasturchilik">Web Dasturchilik</option>
+            <option value="Ingliz tili+mental arifmetika">Ingliz tili+mental arifmetika</option>
+            <option value="Rus tili+mental arifmetika">Rus tili+mental arifmetika</option>
+            <option value="Mental arifmetika">Mental arifmetika</option>
+        </select>
+    </div>
+    <div class="tables">
+        <div class="all_student_xojakent" {% if not user.director and not user.gazalkent_admin and not user.chirchiq_admin %} style="display: inline" {% endif %}>
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Дата регистрации</th>
+                    <th>Предметы</th>
+                </tr>
+                {% for student in students %}
+                        {% if student.subject_1 or student.subject_2 or student.subject_3  %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ student.subject_1 }}{% if student.subject_2 %}/{{ student.subject_2 }}{% endif %}{% if student.subject_3 %}/{{ student.subject_3 }}{% endif %}</td>
+                </tr>
+                            {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_english">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Ingliz tili" or student.subject_2 == "Ingliz tili" or student.subject_3 == "Ingliz tili" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_russian">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Rus tili" or student.subject_2 == "Rus tili" or student.subject_3 == "Rus tili" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_math">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Matematika" or student.subject_2 == "Matematika" or student.subject_3 == "Matematika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_history">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Tarix" or student.subject_2 == "Tarix" or student.subject_3 == "Tarix" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_ona_adabiyot">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Ona tili va Adabiyot" or student.subject_2 == "Ona tili va Adabiyot" or student.subject_3 == "Ona tili va Adabiyot" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_chemistry">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Kimyo" or student.subject_2 == "Kimyo" or student.subject_3 == "Kimyo" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_physics">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Fizika" or student.subject_2 == "Fizika" or student.subject_3 == "Fizika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_biology">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Biologiya" or student.subject_2 == "Biologiya" or student.subject_3 == "Biologiya" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_nurse">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Uy xamshiraligi" or student.subject_2 == "Uy xamshiraligi" or student.subject_3 == "Uy xamshiraligi" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_car">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Avto Maktab" or student.subject_2 == "Avto Maktab" or student.subject_3 == "Avto Maktab" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="xojakent_web">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Web Dasturchilik" or student.subject_2 == "Web Dasturchilik" or student.subject_3 == "Web Dasturchilik" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="Ingliz_tili_mental_arifmetika">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Ingliz tili+mental arifmetika" or student.subject_2 == "Ingliz tili+mental arifmetika" or student.subject_3 == "Ingliz tili+mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="Rus_tili_mental_arifmetika">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Rus tili+mental arifmetika" or student.subject_2 == "Rus tili+mental arifmetika" or student.subject_3 == "Rus tili+mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="mental_arifmetika">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 1 %}
+                        {% if student.subject_1 == "Mental arifmetika" or student.subject_2 == "Mental arifmetika" or student.subject_3 == "Mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="all_student_gazalkent" {% if not user.director and not user.xojakent_admin and not user.chirchiq_admin %} style="display: inline" {% endif %}>
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Дата регистрации</th>
+                    <th>Предметы</th>
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 or student.subject_2 or student.subject_3  %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ student.subject_1 }}{% if student.subject_2 %}/{{ student.subject_2 }}{% endif %}{% if student.subject_3 %}/{{ student.subject_3 }}{% endif %}</td>
+                </tr>
+                            {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_english">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Ingliz tili" or student.subject_2 == "Ingliz tili" or student.subject_3 == "Ingliz tili" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_russian">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Rus tili" or student.subject_2 == "Rus tili" or student.subject_3 == "Rus tili" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_math">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Matematika" or student.subject_2 == "Matematika" or student.subject_3 == "Matematika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_history">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Tarix" or student.subject_2 == "Tarix" or student.subject_3 == "Tarix" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_ona_adabiyot">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Ona tili va Adabiyot" or student.subject_2 == "Ona tili va Adabiyot" or student.subject_3 == "Ona tili va Adabiyot" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_chemistry">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Kimyo" or student.subject_2 == "Kimyo" or student.subject_3 == "Kimyo" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_physics">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Fizika" or student.subject_2 == "Fizika" or student.subject_3 == "Fizika" %}
+                <tr>
+                   <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_biology">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Biologiya" or student.subject_2 == "Biologiya" or student.subject_3 == "Biologiya" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_nurse">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Uy xamshiraligi" or student.subject_2 == "Uy xamshiraligi" or student.subject_3 == "Uy xamshiraligi" %}
+                <tr>
+                   <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_car">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Avto Maktab" or student.subject_2 == "Avto Maktab" or student.subject_3 == "Avto Maktab" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="gazalkent_web">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Web Dasturchilik" or student.subject_2 == "Web Dasturchilik" or student.subject_3 == "Web Dasturchilik" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="Ingliz_tili_mental_arifmetika2">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Ingliz tili+mental arifmetika" or student.subject_2 == "Ingliz tili+mental arifmetika" or student.subject_3 == "Ingliz tili+mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="Rus_tili_mental_arifmetika2">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Rus tili+mental arifmetika" or student.subject_2 == "Rus tili+mental arifmetika" or student.subject_3 == "Rus tili+mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="mental_arifmetika2">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 2 %}
+                        {% if student.subject_1 == "Mental arifmetika" or student.subject_2 == "Mental arifmetika" or student.subject_3 == "Mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="all_student_chirchiq" {% if not user.director and not user.gazalkent_admin and not user.xojakent_admin %} style="display: inline" {% endif %}>
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Дата регистрации</th>
+                    <th>Предметы</th>
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 or student.subject_2 or student.subject_3  %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ student.subject_1 }}{% if student.subject_2 %}/{{ student.subject_2 }}{% endif %}{% if student.subject_3 %}/{{ student.subject_3 }}{% endif %}</td>
+                </tr>
+                            {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+                <div class="chirchiq_english">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Ingliz tili" or student.subject_2 == "Ingliz tili" or student.subject_3 == "Ingliz tili" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_russian">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Rus tili" or student.subject_2 == "Rus tili" or student.subject_3 == "Rus tili" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_math">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Matematika" or student.subject_2 == "Matematika" or student.subject_3 == "Matematika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_history">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Tarix" or student.subject_2 == "Tarix" or student.subject_3 == "Tarix" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_ona_adabiyot">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Ona tili va Adabiyot" or student.subject_2 == "Ona tili va Adabiyot" or student.subject_3 == "Ona tili va Adabiyot" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_chemistry">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Kimyo" or student.subject_2 == "Kimyo" or student.subject_3 == "Kimyo" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_physics">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Fizika" or student.subject_2 == "Fizika" or student.subject_3 == "Fizika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_biology">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Biologiya" or student.subject_2 == "Biologiya" or student.subject_3 == "Biologiya" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_nurse">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Uy xamshiraligi" or student.subject_2 == "Uy xamshiraligi" or student.subject_3 == "Uy xamshiraligi" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_car">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Avto Maktab" or student.subject_2 == "Avto Maktab" or student.subject_3 == "Avto Maktab" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="chirchiq_web">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Web Dasturchilik" or student.subject_2 == "Web Dasturchilik" or student.subject_3 == "Web Dasturchilik" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="Ingliz_tili_mental_arifmetika3">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Ingliz tili+mental arifmetika" or student.subject_2 == "Ingliz tili+mental arifmetika" or student.subject_3 == "Ingliz tili+mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="Rus_tili_mental_arifmetika3">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Rus tili+mental arifmetika" or student.subject_2 == "Rus tili+mental arifmetika" or student.subject_3 == "Rus tili+mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="mental_arifmetika3">
+            <table>
+                <tr>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Пользователь</th>
+                    <th>Возраст</th>
+                    <th>Комментарий</th>
+                    <th>Дата регистрации</th>
+
+                </tr>
+                {% for student in students %}
+                    {% if student.locations == 3 %}
+                        {% if student.subject_1 == "Mental arifmetika" or student.subject_2 == "Mental arifmetika" or student.subject_3 == "Mental arifmetika" %}
+                <tr>
+                    <td><a href="{{ url_for('student_profile2',student_id=student.id) }}">{{ student.name }}</a></td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.comment }}</td>
+                    <td>{{ student.join_data.strftime('%Y-%m-%d') }}</td>
+
+                </tr>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% if not user.director %}
+    <footer>
+        <div class="for_footer">
+            <div class="create_add_button">
+                <button class="add_group">Добавить в группу</button>
+                <button class="create_group">Создать группу</button>
+            </div>
+        </div>
+    </footer>
+</div>
+<div class="create_group_modal">
+    <form action="{{ url_for('prepare_to_create') }}" method="post">
+        <div class="create_group_form" id="create_group_form">
+            <button class="close_create_form">&cross;</button>
+            <h2>Создать группу</h2>
+            <h3>Выберите учителя</h3>
+
+                <select name="pick_teacher" id="">
+                {% for teacher in teachers %}
+                    <option name="pick_teacher" value="{{ teacher.id }}"> {{ teacher.name }}/ {{ teacher.surname }}/{{ teacher.subject }}{% if teacher.locations == 1 %}/Ходжикент{% endif %}{% if teacher.locations == 2 %}/Газалкент{% endif %}{% if teacher.locations == 3 %}/Чирчик{% endif %}</option>
+                {% endfor %}
+                </select>
+            <h3>Название группы</h3>
+            <input type="text" required name="group_name" class="group_name">
+            <h3>Тип курс</h3>
+            <select class="type_course" name="type_of_course" id="type_course">
+                <option value="Standard">Standard</option>
+                <option value="Intensive">Intensive</option>
+                <option value="Super-Intensive">Super-Intensive</option>
+                <option value="Rocket">Rocket</option>
+                <option value="Abiturient">Abiturient</option>
+            </select>
+            <h3>Цена курса</h3>
+            <input type="number" required name="price" id="price">
+            <input type="submit" value="Далее">
+        </div>
+    </form>
+    <form action="{{ url_for('prepare_add_group') }}" method="post">
+        <div class="create_group_form" id="add_group_form">
+            <button class="close_add_form">&cross;</button>
+            <h2>Добавить в группу</h2>
+            <h3>Выберите группу</h3>
+                <select name="group_id" id="add_group_select">
+                {% for group in groups %}
+                    {% if user.locations == group.location %}
+                    <option value="{{ group.id }}">{{ group.name }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+            <input type="number" name="teacher_id" id="teacher_id" hidden>
+            <input type="submit" value="Далее">
+        </div>
+    </form>
+</div>
+    {% for group_names in groups %}
+    <p hidden class="name">{{ group_names.name }}</p>
+    {% endfor %}
+{% endif %}
+<script src="/static/js/new/subject.js"></script>
+</body>
+</html>

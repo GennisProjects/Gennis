@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gennis</title>
+    <link rel="stylesheet" href="/static/bootsrap/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/static/bootsrap/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/static/css/Admin_css/Navbars.min.css">
+</head>
+<body>
+<header>
+    <div class="top_navbar">
+        <div class="top_navbar_logo">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="/static/img/for_home_icons/logo%20gennis%20campus.png" alt="Logo">
+            <div class="top_navbar_logo_title">
+                Gennis
+            </div>
+        </div>
+        <div class="top_navbar_info">
+            <div class="top_navbar_info_fio">
+                <div class="top_navbar_info_fio_name">Nilufar</div>
+                <div class="top_navbar_info_fio_surname">Razokova</div>
+            </div>
+            <div class="top_navbar_info_img">
+                <img data-user="user-profile" src="/static/img/user_image.png" alt="">
+            </div>
+            <div class="top_navbar_exit">
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="basic">
+    <div class="nav_menu">
+        <nav>
+            <ul class="menu">
+                {% if user.director or user.xojakent_admin or user.gazalkent_admin or user.chirchiq_admin %}
+                <li><a class="menu_item" href="/register"><img src="/static/img/icons/edit-regular.svg" alt="">Регистрация</a></li>
+                <li><a class="menu_item" href="/register_teacher"><img src="/static/img/icons/pen-square-solid.svg" alt="">Регистрация Учителя</a></li>
+                <li><a class="menu_item" href="/all_students"><img src="/static/img/icons/user-solid.svg" alt="">Новые студенты</a></li>
+                <li><a class="menu_item" href="/studying_students"><img src="/static/img/icons/user-graduate-solid%20(1).svg" alt="">Студенты</a></li>
+                <li><a class="menu_item" href="/groups"><img src="/static/img/icons/user-friends-solid.svg" alt="">Группы</a></li>
+                <li><a class="menu_item" href="/teachers"><img src="/static/img/icons/user-tie-solid.svg" alt="">Учителя</a></li>
+                {% endif %}
+                {% if user.director %}
+                <li><a class="menu_item" href="/sababli_qilish"><img src="/static/img/icons/user-slash-solid.svg" alt="">Отсутствует по причине</a></li>
+                <li><a class="menu_item" href="/all_user"><img src="/static/img/icons/users-solid.svg" alt="">Все Админы</a></li>
+                {% endif %}
+                 {% if user.director or user.xojakent_admin or user.gazalkent_admin or user.chirchiq_admin %}
+                <li><a class="menu_item" href='/payment'><img src="/static/img/icons/wallet-solid.svg" alt="">Бухгалтерский учет</a></li>
+                {% endif %}
+                {% if teacher %}
+                <li><a class="menu_item" href="{{ url_for('my_group1') }}"><img src="/static/img/icons/users-solid.svg" alt="">Мои группы</a></li>
+                {% endif %}
+                {% if user and not user.xojakent_admin and not user.chirchiq_admin and not user.gazalkent_admin and not user.director%}
+                <li><a class="menu_item" href="{{ url_for('find_group') }}"><img src="/static/img/icons/users-solid.svg" alt="">Мои группы</a></li>
+                {% endif %}
+                {% if user.username == "RIMEFARA" and user.director %}
+                <li><a class="menu_item" href="{{ url_for('users') }}">Delete users</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="exit">
+            <a class="exit_item" href="{{ url_for('log_out') }}"><img src="/static/img/icons/sign-out-alt-solid.svg" alt="">Выход</a>
+        </div>
+    </div>
+
+    <div class="container">
+        
+    </div>
+</section>
+
+<section class="overlay">
+    <div class="modal" data-modal="user-profile">
+        <div class="modal__close">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="modal_tool">
+            <div class="modal_tool_icon">
+                <img id="change_profile" src="/static/img/icons/pencil-alt-solid.svg" alt="pencil">
+            </div>
+        </div>
+        <div class="modal__user_info">
+            <div class="modal__user_info_img">
+                <img src="/static/img/user_image.png" id="change_photo"  alt="user img">
+                <form action="{{ url_for('photo_add') }}" method="post" enctype="multipart/form-data">
+                    <div class="camera">
+                        <label for="upload" class="image_upload">
+                            {{ form.image( class = "upload_img",id="upload")}}
+                        </label>
+                    </div>
+                    <div class="ready_photo">
+                        <input type="submit" value="&check;">
+                    </div>
+                </form>
+            </div>
+            <div class="modal__user_info_fio">
+                <div class="modal__user_info_fio_name">
+                    Razakova
+                </div>
+                <div class="modal__user_info_fio_surname">
+                    Nilufar
+                </div>
+                <div class="modal__user_info_fio_father_name">
+                    kimmidur qizi
+                </div>
+            </div>
+            <div class="modal__user_info_account">
+                Hisob: <div class="modal__user_info_account_number">1 000 000</div>
+            </div>
+            <div class="modal__user_info_username">
+                Username: <div class="modal__user_info_username_info">Lilya</div>
+            </div>
+            <div class="modal__user_info_age">
+                Yosh:
+                <div class="modal__user_info_age_number">21</div>
+            </div>
+            <div class="modal__user_info_phone">
+                Telefon nomer :
+                <div class="modal__user_info_phone_number">94-920-02-32</div>
+            </div>
+            <div class="modal__user_info_father_phone">
+                Telefon nomer :
+                <div class="modal__user_info_father_phone_number">94-920-02-32</div>
+            </div>
+            <div class="modal__user_info_subjects">
+                Учебные предметы:
+                <ol class="modal__user_info_subjects_list">
+                    <li class="modal__user_info_subjects_list_item">english</li>
+                    <li class="modal__user_info_subjects_list_item">russian</li>
+                    <li class="modal__user_info_subjects_list_item">uzb</li>
+                </ol>
+            </div>
+            <div class="modal__user_info_salary">
+                Oylik:
+                <ol class="modal__user_info_salary_list">
+                    <li class="modal__user_info_salary_list_item"> Xo'jakent : <div class="modal__user_info_salary_list_item_number">200 000 </div> som </li>
+                    <li class="modal__user_info_salary_list_item"> Gazalkent :<div class="modal__user_info_salary_list_item_number">200 000 </div> som</li>
+                    <li class="modal__user_info_salary_list_item"> Chirchik :<div class="modal__user_info_salary_list_item_number">200 000 </div> som</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="overlay-password">
+    <div class="modal-password" data-modal="user-password">
+        <div class="modal-password__close_2">
+            <span></span>
+            <span></span>
+        </div>
+        <form action="{{ url_for('change_infos_user') }}" method="post">
+            <label class="modal-password_label" >Password
+            <input class="modal-password_input" type="password" required name="password" placeholder="Введите свой пароль">
+            <input class="modal-password_submit" type="submit" value="Перейти к изменению">
+            </label>
+        </form>
+    </div>
+
+</section>
+
+<script type="text/javascript" src="/static/js/Admin_js/jquery%203.6.js"></script>
+
+<script src="/static/js/Admin_js/list_students.js"></script>
+</body>
+</html>

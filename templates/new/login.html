@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Gennis Campus</title>
+    <link rel="stylesheet" href="/static/css/new/style.min.css">
+</head>
+<body>
+<div class="show" id="modal">
+    <div class="login_form">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div id="flash" class="flash">
+                    <div class="text_flash">
+                        <h5> {{ message }} !</h5>
+                        <span id="close">&cross;</span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <div class="for_label">
+            <label>Login</label>
+        </div>
+        <div class="for_icon_image">
+            <img src="/static/img/png.png" alt="">
+        </div>
+        <form action="{{ url_for('login') }}" method="post" class="for_input">
+            <input type="text" name="username" required placeholder="Введите имя пользователя">
+            <input type="password" name="password" required placeholder="Введите пароль">
+            <div class="show_password">
+                <input type="checkbox" class="checkbox">
+                <label>Показать пароль</label>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="link_register">
+            <p>Нет учетной записи?</p>
+            <a href="{{ url_for('register') }}">Регистрация</a>
+        </div>
+    </div>
+</div>
+<script src="/static/js/new/for_login.js"></script>
+<script src="/static/js/new/flash.js"></script>
+</body>
+</html>

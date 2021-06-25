@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/attendance_list.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+<div class="list_attendance">
+<div class="for_present_absent">
+        <div class="reason_img_paragraph">
+            <p>{{ reason_days.reason_due }}</p>
+            <img src="{{ reason_days.img_due_days }}" alt="">
+        </div>
+        <div class="attendance_table" id="xojakent">
+            <table>
+                <tr>
+                    <th>Дата</th>
+                </tr>
+                {% for student in attendance %}
+                <tr>
+                    <td>{{ student.apset.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="buttons">
+            <button><a href="{{ url_for('commit_due',student_id=reason_days.student_id,id_reason=reason_days.id,teacher_id=query.teacher_id,group_id=reason_days.group_id) }}">Принят</a></button>
+            <button><a href="{{ url_for('refuse_due',student_id=reason_days.student_id,group_id=reason_days.group_id) }}">Игнорировать</a></button>
+        </div>
+</div>
+</div>
+</body>
+</html>

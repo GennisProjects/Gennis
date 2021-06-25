@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/new/attendance_list.min.css">
+    <title>Gennis Campus</title>
+</head>
+<body>
+<div class="list_attendance">
+    <div class="for_icon">
+        <a href="{{ url_for('student_inside_group',group_id=group_id) }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+    <h1>Посещаемость {{ student.name.lower() }} {{ student.surname.lower() }} Рейтинг: {{ total }}</h1>
+    <div class="for_present_absent">
+        {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="for_flash">
+                            <h1>{{ message }} !</h1>
+                            <button class="close_flash">&cross;</button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <div class="attendance_table" id="present">
+            <table>
+                <caption>30 дней, в которые приходил(а)</caption>
+                <tr>
+                    {% if attendance_present.subject == 'Ingliz tili' or attendance_present.subject == 'Rus tili' %}
+                    <th>Домашнее задание</th>
+                    <th>Словарь</th>
+                    <th>Действия на уроке</th>
+                    <th>Средний бал</th>
+                    {% else %}
+                    <th>Домашнее задание</th>
+                    <th>Действия на уроке</th>
+                    {% endif %}
+                    <th>Средний балл</th>
+                    <th>Дата</th>
+                </tr>
+                {% for att in attendance_present %}
+                    {% if att.present %}
+                <tr>
+                    {% if attendance_present.subject == 'Ingliz tili' or attendance_present.subject == 'Rus tili' %}
+                    <td>{{ att.darsga_tayyorgarligi }}</td>
+                    <td>{{ att.lugat }}</td>
+                    <td>{{ att.darsda_qatnashishi }}</td>
+                    <td>{{ att.ortacha_baho }}</td>
+                    {% else %}
+                    <td>{{ att.darsga_tayyorgarligi }}</td>
+                    <td>{{ att.darsda_qatnashishi }}</td>
+                    {% endif %}
+                    <td>{{ att.ortacha_baho }}</td>
+                    <td>{{ att.present.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="extra">
+            <div class="attendance_table" id="absent">
+            <table>
+                <caption>30 дней, в которые не приходил(а)</caption>
+                <tr>
+                    <th>Дата</th>
+                    <th class="question_mark">Удалить день</th>
+                </tr>
+                {% for att in attendance_absent %}
+                    {% if att.apset %}
+                <tr>
+                    <td>{{ att.apset.strftime('%Y-%m-%d') }}</td>
+                    <td class="checks"><input type="checkbox" data-id="{{ att.id }}" value="off" {% if att.for_sabab %}checked{% endif %} class="checkbox"></td>
+                </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+            </div>
+            <form action="{{ url_for('save_reason',student_id=user.id,group_id=group_id) }}" method="post" enctype="multipart/form-data">
+                <div class="reason_form">
+                    <label>Объясните, почему вас не было в этот день</label>
+                    <textarea name="reason"></textarea>
+                    {{ form.csrf_token }}
+                    {{ form.image(class = "form-control-file")  }}
+                    <input type="submit" class="send">
+                </div>
+            </form>
+        </div>
+        <div class="ready_button">
+            <button>Готово</button>
+        </div>
+    </div>
+</div>
+<script src="/static/js/new/student_attendance.js"></script>
+<script src="/static/js/new/flash.js"></script>
+</body>
+</html>

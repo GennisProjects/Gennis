@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gennis</title>
+    <link rel="stylesheet" href="/static/bootsrap/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/static/bootsrap/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/static/css/Admin_css/Navbars.min.css">
+    <link rel="stylesheet" href="/static/css/Admin_css/Studying.min.css">
+</head>
+<body>
+<header>
+    <div class="top_navbar">
+        <div class="top_navbar_logo">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="/static/img/for_home_icons/logo%20gennis%20campus.png" alt="Logo">
+            <div class="top_navbar_logo_title">
+                Gennis
+            </div>
+        </div>
+        <div class="top_navbar_info">
+            <div class="top_navbar_info_fio">
+                <div class="top_navbar_info_fio_name">{{ user.name }}</div>
+                <div class="top_navbar_info_fio_surname">{{ user.surname }}</div>
+            </div>
+            <div class="top_navbar_info_img">
+                {% if user.photo %}
+                <img data-user="user-profile" src="{{ user.photo }}" alt="">
+                {% else %}
+                <img data-user="user-profile" src="/static/img/user_image.png" alt="">
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section class="basic">
+    <div class="nav_menu">
+        <nav>
+            <ul class="menu" >
+                {% if user.xojakent_admin or user.gazalkent_admin or user.chirchiq_admin %}
+                    <li><a class="menu_item" href="/register"><img src="/static/img/icons/edit-regular.svg" alt="">Регистрация</a></li>
+                    <li><a class="menu_item" href="/register_teacher"><img src="/static/img/icons/pen-square-solid.svg" alt="">Регистрация Учителя</a></li>
+                    <li><a class="menu_item" href="/all_students"><img src="/static/img/icons/user-solid.svg" alt="">Новые студенты</a></li>
+                    <li><a class="menu_item" href="/studying_students"><img src="/static/img/icons/user-graduate-solid%20(1).svg" alt="">Студенты</a></li>
+                    <li><a class="menu_item" href="/groups"><img src="/static/img/icons/user-friends-solid.svg" alt="">Группы</a></li>
+                    <li><a class="menu_item" href="/teachers"><img src="/static/img/icons/user-tie-solid.svg" alt="">Учителя</a></li>
+                    <li><a class="menu_item" href='/payment'><img src="/static/img/icons/wallet-solid.svg" alt="">Бухгалтерский учет</a></li>
+                {% endif %}
+                {% if user.director %}
+                    <li><a class="menu_item" href="/register"><img src="/static/img/icons/edit-regular.svg" alt="">Регистрация</a></li>
+                    <li><a class="menu_item" href="/register_teacher"><img src="/static/img/icons/pen-square-solid.svg" alt="">Регистрация Учителя</a></li>
+                    <li class="menu_item_li" id="location_list"><img src="/static/img/icons/user-solid.svg" alt="">Новые студенты <img id="new_student_location_list_down" class="menu_item_li_down_array" src="/static/img/icons/sort-down-solid.svg" alt="">
+                        <ul class="menu_item_li_sub" id="new_student_location_list">
+                            <li><a class="menu_item_li_sub_item" href="/all_students"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Ходжикент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Газалкент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Чирчик</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item_li" id="location_list_2"><img src="/static/img/icons/user-graduate-solid%20(1).svg" alt="">Студенты<img id="new_student_location_list_down_2" class="menu_item_li_down_array" src="/static/img/icons/sort-down-solid.svg" alt="">
+                        <ul class="menu_item_li_sub" id="new_student_location_list_2">
+                            <li><a class="menu_item_li_sub_item" href="/studying_students"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Ходжикент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Газалкент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Чирчик</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item_li" id="location_list_3"><img src="/static/img/icons/user-friends-solid.svg" alt="">Группы<img id="new_student_location_list_down_3" class="menu_item_li_down_array" src="/static/img/icons/sort-down-solid.svg" alt="">
+                        <ul class="menu_item_li_sub" id="new_student_location_list_3">
+                            <li><a class="menu_item_li_sub_item" href="/groups"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Ходжикент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Газалкент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Чирчик</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="menu_item" href="/teachers"><img src="/static/img/icons/user-tie-solid.svg" alt="">Учителя</a></li>
+                    <li class="menu_item_li" id="location_list_4"><img src="/static/img/icons/user-slash-solid.svg" alt="">Отсутствует по причине<img id="new_student_location_list_down_4" class="menu_item_li_down_array" src="/static/img/icons/sort-down-solid.svg" alt="">
+                        <ul class="menu_item_li_sub" id="new_student_location_list_4">
+                            <li><a class="menu_item_li_sub_item" href="/sababli_qilish"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Ходжикент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Газалкент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Чирчик</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="menu_item" href="/all_user"><img src="/static/img/icons/users-solid.svg" alt="">Все Админы</a></li>
+                    <li class="menu_item_li" id="location_list_5"><img src="/static/img/icons/wallet-solid.svg" alt="">Бухгалтерский учет<img id="new_student_location_list_down_5" class="menu_item_li_down_array" src="/static/img/icons/sort-down-solid.svg" alt="">
+                        <ul class="menu_item_li_sub" id="new_student_location_list_5">
+                            <li><a class="menu_item_li_sub_item" href="/payment"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Ходжикент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Газалкент</a></li>
+                            <li><a class="menu_item_li_sub_item" href="/register"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Чирчик</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+                {% if teacher %}
+                <li><a class="menu_item" href="{{ url_for('my_group1') }}"><img src="/static/img/icons/users-solid.svg" alt="">Мои группы</a></li>
+                {% endif %}
+                {% if user and not user.xojakent_admin and not user.chirchiq_admin and not user.gazalkent_admin and not user.director%}
+                <li><a class="menu_item" href="{{ url_for('find_group') }}"><img src="/static/img/icons/users-solid.svg" alt="">Мои группы</a></li>
+                {% endif %}
+                {% if user.username == "RIMEFARA" and user.director %}
+                <li><a class="menu_item" href="{{ url_for('users') }}">Delete users</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+        <div class="exit">
+            <a class="exit_item" href="{{ url_for('log_out') }}"><img src="/static/img/icons/sign-out-alt-solid.svg" alt="">Выход</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="list_tools">
+            <div>
+                <select class="list_tools_select" id="search_types">
+                    <option value="Выберите тип поиска">Выберите тип поиска</option>
+                    <option value="Поиск по имени">Поиск по имени</option>
+                    <option value="Поиск по фамилии">Поиск по фамилии</option>
+                    <option value="Поиск по имени пользователя">Поиск по имени пользователя</option>
+                </select>
+            </div>
+            <div>
+                <div class="list_tools_location"><img src="/static/img/icons/map-marker-alt-solid.svg" alt="">Ходжикент</div>
+            </div>
+            <div>
+                <form action="{{ url_for('search_name') }}" method="post">
+                    <div class="list_tools_search" id="search_name">
+                        <input type="text" required name="student" placeholder="Введите имя">
+                        <input type="submit" value="Поиск">
+                    </div>
+                </form>
+                <form action="{{ url_for('search_surname') }}" method="post">
+                    <div class="list_tools_search" id="search_surname">
+                        <input type="text" required name="student" placeholder="Введите фамилию">
+                        <input type="submit" value="Поиск">
+                    </div>
+                </form>
+                <form action="{{ url_for('search_username') }}" method="post">
+                    <div class="list_tools_search" id="search_username">
+                        <input type="text" required name="student" placeholder="Введите имя пользователя">
+                        <input type="submit" value="Поиск">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="list_students_info">
+            <div class="list_students_info_img">
+            </div>
+            <div class="list_students_info_fio">
+                <div class="list_students_info_fio_name">Имя</div>
+                <div class="list_students_info_fio_surname">Фамилия</div>
+                <div class="list_students_info_fio_username">Пользователь</div>
+            </div>
+            <div class="list_students_info_account">Summa</div>
+        </div>
+        <div class="list_students">
+        {% for student in students1 %}
+            {% if student.locations == 1 %}
+                <a href="{{ url_for('student_info',student_id=student.id) }}">
+                    <div class="list_students_item">
+                        <div class="list_students_item_img">
+                            {% if student.photo %}
+                            <img src="{{ student.photo }}" alt="">
+                            {% else %}
+                            <img src="/static/img/user_image.png" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="list_students_item_fio">
+                            <div class="list_students_item_fio_name">{{ student.name }}</div>
+                            <div class="list_students_item_fio_surname">{{ student.surname }}</div>
+                            <div class="list_students_item_fio_username">{{ student.username }}</div>
+                        </div>
+                        <div class="list_students_item_account">{{ student.money}}</div>
+                    </div>
+                </a>
+           {% endif %}
+         {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+<section class="overlay">
+    <div class="modal" data-modal="user-profile">
+        <div class="modal__close">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="modal_tool">
+            <div class="modal_tool_icon">
+                <img id="change_profile" src="/static/img/icons/pencil-alt-solid.svg" alt="pencil">
+            </div>
+        </div>
+        <div class="modal__user_info">
+            <div class="modal__user_info_img">
+                <label for="upload" class="image_upload">
+                {% if user.photo %}
+                <img src="{{ user.photo }}" id="change_photo"  alt="user img">
+                {% else %}
+                <img src="/static/img/user_image.png" id="change_photo" alt="user img">
+                {% endif %}
+                </label>
+                <form action="{{ url_for('photo_add') }}" method="post" enctype="multipart/form-data">
+                    <div class="camera">
+                            {{ form.image( class = "upload_img",id="upload")}}
+                    </div>
+                    <div class="ready_photo">
+                        <input type="submit" value="&check;">
+                    </div>
+                </form>
+            </div>
+            <div class="modal__user_info_fio">
+                <div class="modal__user_info_fio_name">
+                    {{ user.name }}
+                </div>
+                <div class="modal__user_info_fio_surname">
+                    {{ user.surname }}
+                </div>
+                <div class="modal__user_info_fio_father_name">
+                    {{ user.otasining_ismi }}
+                </div>
+            </div>
+            {% if not user.xojakent_admin and not user.gazalkent_admin and not user.chirchiq_admin and not user.director %}
+            <div class="modal__user_info_account">
+                Hisob: <div class="modal__user_info_account_number">{{ user.money }}</div>
+            </div>
+            {% endif %}
+            <div class="modal__user_info_username">
+                Username: <div class="modal__user_info_username_info">{{ user.username }}</div>
+            </div>
+            <div class="modal__user_info_age">
+                Yosh:
+                <div class="modal__user_info_age_number">{{ user.age }}</div>
+            </div>
+            <div class="modal__user_info_phone">
+                Telefon nomer :
+                <div class="modal__user_info_phone_number">{{ user.phone }}</div>
+            </div>
+            <div class="modal__user_info_father_phone">
+                Telefon nomer-2 :
+                <div class="modal__user_info_father_phone_number">{{ user.parent_phone }}</div>
+            </div>
+            <div class="modal__user_info_subjects">
+                Учебные предметы:
+                <ol class="modal__user_info_subjects_list">
+                    <li class="modal__user_info_subjects_list_item">{{ user.subject_1 }}</li>
+                    {% if user.subject_2 %}
+                    <li class="modal__user_info_subjects_list_item">{{ user.subject_2 }}</li>
+                    {% endif %}
+                    {% if user.subject_3 %}
+                    <li class="modal__user_info_subjects_list_item">{{ user.subject_3 }}</li>
+                    {% endif %}
+                </ol>
+            </div>
+            {% if not user %}
+            <div class="modal__user_info_salary">
+                Oylik:
+                <ol class="modal__user_info_salary_list">
+                    <li class="modal__user_info_salary_list_item"> Xo'jakent : <div class="modal__user_info_salary_list_item_number">200 000 </div> som </li>
+                    <li class="modal__user_info_salary_list_item"> Gazalkent :<div class="modal__user_info_salary_list_item_number">200 000 </div> som</li>
+                    <li class="modal__user_info_salary_list_item"> Chirchik :<div class="modal__user_info_salary_list_item_number">200 000 </div> som</li>
+                </ol>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</section>
+
+<section class="overlay-password">
+    <div class="modal-password" data-modal="user-password">
+        <div class="modal-password__close_2">
+            <span></span>
+            <span></span>
+        </div>
+        <form action="{{ url_for('change_infos_user') }}" method="post">
+            <label class="modal-password_label" >Password
+                <input class="modal-password_input" type="password" required name="password" placeholder="Введите свой пароль">
+                <input class="modal-password_submit" type="submit" value="Перейти к изменению">
+            </label>
+        </form>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/Admin_js/Studying%20students.js"></script>
+<script src="/static/js/Admin_js/menu_navbar.js"></script>
+</body>
+</html>

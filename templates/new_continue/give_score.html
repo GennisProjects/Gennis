@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gennis Campus</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/new/giving_score.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="score">
+    <div class="for_icon">
+        <a href="{{ url_for('teacher_inside_group',group_id=group.id) }}"><img src="/static/img/png.png" alt=""></a>
+    </div>
+    <div class="container">
+        {% for student in students %}
+            {% if student.ball_time %}
+              {% if student.ball_time == hour2 or student.ball_time < hour2 %}
+        <div class="score__box">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="for_flash">
+                            <h1>{{ message }} !</h1>
+                            <button class="close_flash">&cross;</button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="score__box_img">
+                {% if student.photo %}
+                    <img src="{{ student.photo }}" alt="User">
+                {% else %}
+                <img src="/static/img/user_image.png" alt="User">
+                {% endif %}
+            </div>
+            <div class="score__box_fio">
+                <div class="score__box_fio_name">{{ student.name }}</div>
+                <div class="score__box_fio_surname">{{ student.surname }}</div>
+            </div>
+            <div class="score__box_check_attendance">
+                <button class="present">&checkmark;</button>
+                <button class="absent">&cross;</button>
+            </div>
+
+            <div class="score__box_cancel">
+                <button class="cancel">Отмена</button>
+            </div>
+
+            <div class="score__box_absent">
+                <h3>Подтвердить отсутствие</h3>
+                <button><a href="{{ url_for('make_absent',student_id=student.id,group_id=group.id) }}"> Подтверждать</a></button>
+            </div>
+            {% if teacher.subject == 'Ingliz tili' or teacher.subject == 'Rus tili' or teacher.subject == "Ingliz tili+mental arifmetika" or teacher.subject == "Rus tili+mental arifmetika"%}
+            <div class="score__box_balls">
+                <div class="score__box_balls_box">
+                    <h3>Домашнее задание</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="homework1" class="fa fa-star"></i>
+                        <i id="homework2" class="fa fa-star"></i>
+                        <i id="homework3" class="fa fa-star"></i>
+                        <i id="homework4" class="fa fa-star"></i>
+                        <i id="homework5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="score__box_balls_box">
+                    <h3>Словарь</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="dictionary1" class="fa fa-star"></i>
+                        <i id="dictionary2" class="fa fa-star"></i>
+                        <i id="dictionary3" class="fa fa-star"></i>
+                        <i id="dictionary4" class="fa fa-star"></i>
+                        <i id="dictionary5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="score__box_balls_box">
+                    <h3>Действия на уроке</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="active1" class="fa fa-star"></i>
+                        <i id="active2" class="fa fa-star"></i>
+                        <i id="active3" class="fa fa-star"></i>
+                        <i id="active4" class="fa fa-star"></i>
+                        <i id="active5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <form action="{{ url_for('giving_score',student_id=student.id,group_id=group.id) }}" method="post">
+                    <input type="number" value="0" name="homework" class="homework">
+                    <input type="number" value="0" name="dictionary" class="dictionary">
+                    <input type="number" value="0" name="active" class="active">
+                    <input class="score__box_balls_submit_btn" type="submit" value="Готово">
+                </form>
+            </div>
+            {% else %}
+            <div class="score__box_balls">
+                <div class="score__box_balls_box">
+                    <h3>Домашнее задание</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="homework1" class="fa fa-star"></i>
+                        <i id="homework2" class="fa fa-star"></i>
+                        <i id="homework3" class="fa fa-star"></i>
+                        <i id="homework4" class="fa fa-star"></i>
+                        <i id="homework5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="score__box_balls_box">
+                    <h3>Действия на уроке</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="active1" class="fa fa-star"></i>
+                        <i id="active2" class="fa fa-star"></i>
+                        <i id="active3" class="fa fa-star"></i>
+                        <i id="active4" class="fa fa-star"></i>
+                        <i id="active5" class="fa fa-star"></i>
+                    </div>
+                </div>
+
+                <form action="{{ url_for('giving_score',student_id=student.id,group_id=group.id) }}" method="post">
+                    <input type="number" value="0" name="homework" class="homework">
+                    <input type="number" value="0" name="dictionary" class="dictionary">
+                    <input type="number" value="0" name="active" class="active">
+                    <input class="score__box_balls_submit_btn" type="submit" value="Готово">
+                </form>
+            </div>
+        </div>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% for student in students %}
+            {% if not student.ball_time %}
+        <div class="score__box">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="for_flash">
+                            <h1>{{ message }} !</h1>
+                            <button class="close_flash">&cross;</button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="score__box_img">
+                {% if student.photo %}
+                    <img src="{{ student.photo }}" alt="User">
+                {% else %}
+                <img src="/static/img/user_image.png" alt="User">
+                {% endif %}
+            </div>
+            <div class="score__box_fio">
+                <div class="score__box_fio_name">{{ student.name }}</div>
+                <div class="score__box_fio_surname">{{ student.surname }}</div>
+            </div>
+            <div class="score__box_check_attendance">
+                <button class="present">&checkmark;</button>
+                <button class="absent">&cross;</button>
+            </div>
+
+            <div class="score__box_cancel">
+                <button class="cancel">Отмена</button>
+            </div>
+
+            <div class="score__box_absent">
+                <h3>Подтвердить отсутствие</h3>
+                <button><a href="{{ url_for('make_absent',student_id=student.id,group_id=group.id) }}"> Подтверждать</a></button>
+            </div>
+            {% if teacher.subject == 'Ingliz tili' or teacher.subject == 'Rus tili' or teacher.subject == "Ingliz tili+mental arifmetika" or teacher.subject == "Rus tili+mental arifmetika"%}
+            <div class="score__box_balls">
+                <div class="score__box_balls_box">
+                    <h3>Домашнее задание</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="homework1" class="fa fa-star"></i>
+                        <i id="homework2" class="fa fa-star"></i>
+                        <i id="homework3" class="fa fa-star"></i>
+                        <i id="homework4" class="fa fa-star"></i>
+                        <i id="homework5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="score__box_balls_box">
+                    <h3>Словарь</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="dictionary1" class="fa fa-star"></i>
+                        <i id="dictionary2" class="fa fa-star"></i>
+                        <i id="dictionary3" class="fa fa-star"></i>
+                        <i id="dictionary4" class="fa fa-star"></i>
+                        <i id="dictionary5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="score__box_balls_box">
+                    <h3>Действия на уроке</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="active1" class="fa fa-star"></i>
+                        <i id="active2" class="fa fa-star"></i>
+                        <i id="active3" class="fa fa-star"></i>
+                        <i id="active4" class="fa fa-star"></i>
+                        <i id="active5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <form action="{{ url_for('giving_score',student_id=student.id,group_id=group.id) }}" method="post">
+                    <input type="number" value="0" name="homework" class="homework">
+                    <input type="number" value="0" name="dictionary" class="dictionary">
+                    <input type="number" value="0" name="active" class="active">
+                    <input class="score__box_balls_submit_btn" type="submit" value="Готово">
+                </form>
+            </div>
+            {% else %}
+            <div class="score__box_balls">
+                <div class="score__box_balls_box">
+                    <h3>Домашнее задание</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="homework1" class="fa fa-star"></i>
+                        <i id="homework2" class="fa fa-star"></i>
+                        <i id="homework3" class="fa fa-star"></i>
+                        <i id="homework4" class="fa fa-star"></i>
+                        <i id="homework5" class="fa fa-star"></i>
+                    </div>
+                </div>
+                <div class="score__box_balls_box">
+                    <h3>Действия на уроке</h3>
+                    <div class="score__box_balls_box_stars">
+                        <i id="active1" class="fa fa-star"></i>
+                        <i id="active2" class="fa fa-star"></i>
+                        <i id="active3" class="fa fa-star"></i>
+                        <i id="active4" class="fa fa-star"></i>
+                        <i id="active5" class="fa fa-star"></i>
+                    </div>
+                </div>
+
+                <form action="{{ url_for('giving_score',student_id=student.id,group_id=group.id) }}" method="post">
+                    <input type="number" value="0" name="homework" class="homework">
+                    <input type="number" value="0" name="dictionary" class="dictionary">
+                    <input type="number" value="0" name="active" class="active">
+                    <input class="score__box_balls_submit_btn" type="submit" value="Готово">
+                </form>
+            </div>
+        </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+<script src="/static/js/new/giving_score.js"></script>
+</body>
+</html>
