@@ -130,8 +130,8 @@
             <div>
                 <form action="{{ url_for('search_name') }}" method="post">
                     <div class="list_tools_search" id="search_name">
-                        <input type="text" required name="student" placeholder="Введите имя">
-                        <input type="submit" value="Поиск">
+                        <input class="list_tools_search_input" type="text" required name="student" placeholder="Введите имя">
+                        <input class="list_tools_search_submit" type="submit" value="Поиск">
                     </div>
                 </form>
                 <form action="{{ url_for('search_surname') }}" method="post">

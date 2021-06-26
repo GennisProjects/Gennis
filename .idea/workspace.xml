@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="305473da-54d5-47b2-a513-b702a7640fcd" name="Default Changelist" comment="" />
+    <list default="true" id="305473da-54d5-47b2-a513-b702a7640fcd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/Admin_css/Studying.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/Admin_css/Studying.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/sass/Admin sass/_gen_studying.sass" beforeDir="false" afterPath="$PROJECT_DIR$/static/sass/Admin sass/_gen_studying.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Admin templates/xojakent/studying students xojakent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Admin templates/xojakent/studying students xojakent.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +116,8 @@
       <workItem from="1624423196768" duration="199000" />
       <workItem from="1624538002584" duration="9876000" />
       <workItem from="1624626252392" duration="2389000" />
-      <workItem from="1624628936023" duration="288000" />
+      <workItem from="1624628936023" duration="1365000" />
+      <workItem from="1624695262010" duration="1584000" />
     </task>
     <servers />
   </component>
@@ -143,22 +149,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="137" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1623756369248" />
-    <state width="1323" height="267" key="GridCell.Tab.0.bottom" timestamp="1624628853517">
+    <state width="1323" height="267" key="GridCell.Tab.0.bottom" timestamp="1624695445094">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="267" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1624628853517" />
-    <state width="1323" height="267" key="GridCell.Tab.0.center" timestamp="1624628853516">
+    <state width="1323" height="267" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1624695445094" />
+    <state width="1323" height="267" key="GridCell.Tab.0.center" timestamp="1624695445094">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="267" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1624628853516" />
-    <state width="1323" height="267" key="GridCell.Tab.0.left" timestamp="1624628853516">
+    <state width="1323" height="267" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1624695445094" />
+    <state width="1323" height="267" key="GridCell.Tab.0.left" timestamp="1624695445093">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="267" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1624628853516" />
-    <state width="1323" height="267" key="GridCell.Tab.0.right" timestamp="1624628853517">
+    <state width="1323" height="267" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1624695445093" />
+    <state width="1323" height="267" key="GridCell.Tab.0.right" timestamp="1624695445094">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="267" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1624628853517" />
+    <state width="1323" height="267" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1624695445094" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1623751259392">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -183,6 +189,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/project_1_$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1624207157029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project_1_$project_1.coverage" NAME="project_1 Coverage Results" MODIFIED="1623748758805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/project_1$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1624626291346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project_1$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1624695372644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
