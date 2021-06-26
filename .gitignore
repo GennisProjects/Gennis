@@ -3,3 +3,5 @@ migrations/
 node_modules/
 venv/
 uploads/
+.idea/
+_pycache_/

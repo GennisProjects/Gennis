@@ -116,7 +116,7 @@
     <div class="container">
         <div class="list_tools">
             <div>
-                <select class="list_tools_select" id="xojakent_subjects">
+                <select class="list_tools_select" id="subjects">
                     <option value="Все студенты">Все студенты</option>
                     <option  value="Ingliz tili">Ingliz tili</option>
                     <option  value="Rus tili">Rus tili</option>
@@ -143,23 +143,23 @@
             </div>
 
         </div>
-        <div class="list_students_info">
-            <div class="list_students_info_img">
-            </div>
-            <div class="list_students_info_fio">
-                <div class="list_students_info_fio_name">Имя</div>
-                <div class="list_students_info_fio_surname">Фамилия</div>
-                <div class="list_students_info_fio_username">Пользователь</div>
-            </div>
-            <div class="list_students_info_age">Возраст</div>
-            <div class="list_students_info_date_reg">Дата регистрации</div>
-            <div class="list_students_info_date_reg">Комментарий</div>
-            <div class="list_students_info_subjects">Предметы</div>
-        </div>
-        <div class="list_students">
+{#        <div class="list_students_info">#}
+{#            <div class="list_students_info_img">#}
+{#            </div>#}
+{#            <div class="list_students_info_fio">#}
+{#                <div class="list_students_info_fio_name">Имя</div>#}
+{#                <div class="list_students_info_fio_surname">Фамилия</div>#}
+{#                <div class="list_students_info_fio_username">Пользователь</div>#}
+{#            </div>#}
+{#            <div class="list_students_info_age">Возраст</div>#}
+{#            <div class="list_students_info_date_reg">Дата регистрации</div>#}
+{#            <div class="list_students_info_date_reg">Комментарий</div>#}
+{#            <div class="list_students_info_subjects">Предметы</div>#}
+{#        </div>#}
+        <div class="list_students" id="all_students_xojakent">
         {% for student in students %}
             {% if student.locations == 1 %}
-                <a href="{{ url_for('student_info',student_id=student.id) }}">
+                <a href="{{ url_for('student_profile2',student_id=student.id) }}">
                     <div class="list_students_item">
                         <div class="list_students_item_img">
                             {% if student.photo %}
@@ -176,9 +176,171 @@
                         <div class="list_students_item_age">{{ student.age }}</div>
                         <div class="list_students_item_date_reg">{{ student.join_data.strftime('%Y-%m-%d') }}</div>
                         <div class="list_students_item_comment">{{ student.comment[0:10] }}</div>
-                        <div class="list_students_item_subjects">{{ student.subject_2 }}{% if student.subject_3 %} <span> {{ student.subject_2 }}{% endif %} </span>{% if student.subject_3 %} {{ student.subject_3 }}{% endif %}</div>
+                        <div class="list_students_item_subjects">{{ student.subject_1 }}{% if student.subject_2 %} <span> {{ student.subject_2 }}{% endif %} </span>{% if student.subject_3 %} {{ student.subject_3 }}{% endif %}</div>
                     </div>
                 </a>
+           {% endif %}
+         {% endfor %}
+        </div>
+        <div class="list_students" id="xojakent_english" hidden>
+        {% for student in students %}
+            {% if student.locations == 1 %}
+                {% if student.subject_1 == "Ingliz tili" or  student.subject_2 == "Ingliz tili" or student.subject_3 == "Ingliz tili" %}
+                <a href="{{ url_for('student_profile2',student_id=student.id) }}">
+                    <div class="list_students_item">
+                        <div class="list_students_item_img">
+                            {% if student.photo %}
+                            <img src="{{ student.photo }}" alt="">
+                            {% else %}
+                            <img src="/static/img/user_image.png" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="list_students_item_fio">
+                            <div class="list_students_item_fio_name">{{ student.name }}</div>
+                            <div class="list_students_item_fio_surname">{{ student.surname }}</div>
+                            <div class="list_students_item_fio_username">{{ student.username }}</div>
+                        </div>
+                        <div class="list_students_item_age">{{ student.age }}</div>
+                        <div class="list_students_item_date_reg">{{ student.join_data.strftime('%Y-%m-%d') }}</div>
+                        <div class="list_students_item_comment" id="comment_english">{{ student.comment[0:10] }}</div>
+                    </div>
+                </a>
+                    {% endif %}
+           {% endif %}
+         {% endfor %}
+        </div>
+        <div class="list_students" id="xojakent_russian" hidden>
+        {% for student in students %}
+            {% if student.locations == 1 %}
+                {% if student.subject_1 == "Rus tili" or  student.subject_2 == "Rus tili" or student.subject_3 == "Rus tili" %}
+                <a href="{{ url_for('student_profile2',student_id=student.id) }}">
+                    <div class="list_students_item">
+                        <div class="list_students_item_img">
+                            {% if student.photo %}
+                            <img src="{{ student.photo }}" alt="">
+                            {% else %}
+                            <img src="/static/img/user_image.png" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="list_students_item_fio">
+                            <div class="list_students_item_fio_name">{{ student.name }}</div>
+                            <div class="list_students_item_fio_surname">{{ student.surname }}</div>
+                            <div class="list_students_item_fio_username">{{ student.username }}</div>
+                        </div>
+                        <div class="list_students_item_age">{{ student.age }}</div>
+                        <div class="list_students_item_date_reg">{{ student.join_data.strftime('%Y-%m-%d') }}</div>
+                        <div class="list_students_item_comment" id="comment_english">{{ student.comment[0:10] }}</div>
+                    </div>
+                </a>
+                    {% endif %}
+           {% endif %}
+         {% endfor %}
+        </div>
+        <div class="list_students" id="xojakent_math" hidden>
+        {% for student in students %}
+            {% if student.locations == 1 %}
+                {% if student.subject_1 == "Matematika" or  student.subject_2 == "Matematika" or student.subject_3 == "Matematika" %}
+                <a href="{{ url_for('student_profile2',student_id=student.id) }}">
+                    <div class="list_students_item">
+                        <div class="list_students_item_img">
+                            {% if student.photo %}
+                            <img src="{{ student.photo }}" alt="">
+                            {% else %}
+                            <img src="/static/img/user_image.png" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="list_students_item_fio">
+                            <div class="list_students_item_fio_name">{{ student.name }}</div>
+                            <div class="list_students_item_fio_surname">{{ student.surname }}</div>
+                            <div class="list_students_item_fio_username">{{ student.username }}</div>
+                        </div>
+                        <div class="list_students_item_age">{{ student.age }}</div>
+                        <div class="list_students_item_date_reg">{{ student.join_data.strftime('%Y-%m-%d') }}</div>
+                        <div class="list_students_item_comment" id="comment_english">{{ student.comment[0:10] }}</div>
+                    </div>
+                </a>
+                    {% endif %}
+           {% endif %}
+         {% endfor %}
+        </div>
+        <div class="list_students" id="xojakent_history" hidden>
+        {% for student in students %}
+            {% if student.locations == 1 %}
+                {% if student.subject_1 == "Tarix" or  student.subject_2 == "Tarix" or student.subject_3 == "Tarix" %}
+                <a href="{{ url_for('student_profile2',student_id=student.id) }}">
+                    <div class="list_students_item">
+                        <div class="list_students_item_img">
+                            {% if student.photo %}
+                            <img src="{{ student.photo }}" alt="">
+                            {% else %}
+                            <img src="/static/img/user_image.png" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="list_students_item_fio">
+                            <div class="list_students_item_fio_name">{{ student.name }}</div>
+                            <div class="list_students_item_fio_surname">{{ student.surname }}</div>
+                            <div class="list_students_item_fio_username">{{ student.username }}</div>
+                        </div>
+                        <div class="list_students_item_age">{{ student.age }}</div>
+                        <div class="list_students_item_date_reg">{{ student.join_data.strftime('%Y-%m-%d') }}</div>
+                        <div class="list_students_item_comment" id="comment_english">{{ student.comment[0:10] }}</div>
+                    </div>
+                </a>
+                {% endif %}
+           {% endif %}
+         {% endfor %}
+        </div>
+        <div class="list_students" id="xojakent_tongue" hidden>
+        {% for student in students %}
+            {% if student.locations == 1 %}
+                {% if student.subject_1 == "Ona tili va Adabiyot" or  student.subject_2 == "Ona tili va Adabiyot" or student.subject_3 == "Ona tili va Adabiyot" %}
+                <a href="{{ url_for('student_profile2',student_id=student.id) }}">
+                    <div class="list_students_item">
+                        <div class="list_students_item_img">
+                            {% if student.photo %}
+                            <img src="{{ student.photo }}" alt="">
+                            {% else %}
+                            <img src="/static/img/user_image.png" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="list_students_item_fio">
+                            <div class="list_students_item_fio_name">{{ student.name }}</div>
+                            <div class="list_students_item_fio_surname">{{ student.surname }}</div>
+                            <div class="list_students_item_fio_username">{{ student.username }}</div>
+                        </div>
+                        <div class="list_students_item_age">{{ student.age }}</div>
+                        <div class="list_students_item_date_reg">{{ student.join_data.strftime('%Y-%m-%d') }}</div>
+                        <div class="list_students_item_comment" id="comment_english">{{ student.comment[0:10] }}</div>
+                    </div>
+                </a>
+                {% endif %}
+           {% endif %}
+         {% endfor %}
+        </div>
+        <div class="list_students" id="xojakent_chemistry" hidden>
+        {% for student in students %}
+            {% if student.locations == 1 %}
+                {% if student.subject_1 == "Kimyo" or  student.subject_2 == "Kimyo" or student.subject_3 == "Kimyo" %}
+                <a href="{{ url_for('student_profile2',student_id=student.id) }}">
+                    <div class="list_students_item">
+                        <div class="list_students_item_img">
+                            {% if student.photo %}
+                            <img src="{{ student.photo }}" alt="">
+                            {% else %}
+                            <img src="/static/img/user_image.png" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="list_students_item_fio">
+                            <div class="list_students_item_fio_name">{{ student.name }}</div>
+                            <div class="list_students_item_fio_surname">{{ student.surname }}</div>
+                            <div class="list_students_item_fio_username">{{ student.username }}</div>
+                        </div>
+                        <div class="list_students_item_age">{{ student.age }}</div>
+                        <div class="list_students_item_date_reg">{{ student.join_data.strftime('%Y-%m-%d') }}</div>
+                        <div class="list_students_item_comment" id="comment_english">{{ student.comment[0:10] }}</div>
+                    </div>
+                </a>
+                {% endif %}
            {% endif %}
          {% endfor %}
         </div>
@@ -356,6 +518,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="/static/js/Admin_js/list_students.js"></script>
+<script src="/static/js/Admin_js/subject.js"></script>
 <script src="/static/js/Admin_js/menu_navbar.js"></script>
 </body>
 </html>
