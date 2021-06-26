@@ -71,6 +71,14 @@ def register():
                 flash('Это имя пользователя уже занято')
                 return redirect(url_for('login'))
 
+
+        # location1 = Locations(id=1,loc='xojakent')
+        # location2 = Locations(id=2,loc='gazalkent')
+        # location3 = Locations(id=3,loc='chirchiq')
+        # db.session.add(location1)
+        # db.session.add(location2)
+        # db.session.add(location3)
+        # db.session.commit()
         # print(name)
         # print(surname)
         # print(username)
