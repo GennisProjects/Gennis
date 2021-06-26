@@ -19,32 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d0dc46f-e7a5-4e85-8b2d-fe60f0000f2b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis-campus.hE3MZg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis_campus.NuDDuw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis_campus.NuDDuw/schema/public.abK9xQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/Admin_js/subject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/gennis-campus.hE3MZg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis-campus.hE3MZg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/gennis-campus.hE3MZg/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis-campus.hE3MZg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/gennis-campus.hE3MZg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis-campus.hE3MZg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/gennis-campus.hE3MZg/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/postgres.edMnLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis_campus.NuDDuw/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1cd1af87-db9f-4cfe-ac53-e8be531289e9/storage_v2/_src_/database/gennis_campus.NuDDuw/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1bf24678-841f-400e-ae66-9144dcb0f5f6/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base_route.py" beforeDir="false" afterPath="$PROJECT_DIR$/base_route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Admin templates/xojakent/List students xojakent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Admin templates/xojakent/List students xojakent.html" afterDir="false" />
-    </list>
+    <list default="true" id="1d0dc46f-e7a5-4e85-8b2d-fe60f0000f2b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +94,7 @@
       <workItem from="1624632495189" duration="989000" />
       <workItem from="1624633891152" duration="1303000" />
       <workItem from="1624687979620" duration="5001000" />
-      <workItem from="1624696324981" duration="300000" />
+      <workItem from="1624696324981" duration="700000" />
     </task>
     <servers />
   </component>
